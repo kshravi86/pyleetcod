@@ -1,54 +1,92 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-cpp"><code>
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
 
 
-#include&ltiostream&gt
-using namespace std;
+  <div style="color:blue;">
+	<br><p style="color:red;"> Spring configuration file
+	</p>
 
-long long f[51];
 
-void init()
-{
-	f[0] = 0; f[1] = 1;
-	for (int i = 2; i <= 50; i++)
-	{
-		f[i] = f[i - 1] + f[i - 2];
-		if (f[i] > 10000000000LL)
-			break;
-	}
-}
 
-int main()
-{
-	init();
-	int t;
-	cin >> t;
-	while (t--)
-	{
-		long long n;
-		cin >> n;
-		bool isFibo = false;
-		for (int i = 0; i < 50;i++)
-			if (f[i] == n)
-			{
-				isFibo = true;
-				break;
-			}
-		if (isFibo)
-			cout << "IsFibo" << endl;
-		else
-			cout << "IsNotFibo" << endl;
-	}
-	return 0;
-}
 
- </code></pre>
-  </body>
-</html>		
+
+	
+	Spring configuration file is an XML file. This file contains the classes information and describes how these classes are configured and introduced to each other.
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

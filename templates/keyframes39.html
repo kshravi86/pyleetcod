@@ -1,57 +1,94 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-cpp"><code>
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
 
 
-#include&ltiostream&gt
-#include&ltset&gt
-using namespace std;
+  <div style="color:blue;">
+	<br><p style="color:red;"> Explain the Spring MVC module
+	</p>
 
-int a[100000];
-set&ltint&gt s;
 
-int main()
-{
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; i++)
-		cin >> a[i];
 
-	int cur = a[0];
-	s.insert(cur);
-	for (int i = 1; i < n; i++)
-	{
-		cur += a[i];
-		s.insert(cur);
-	}
 
-	for (set<int>::iterator it = s.begin(); it != s.end();++it)
-	{
-		if (cur % (*it) == 0)
-		{
-			bool flag = true;
-			for (int j = 1; j <= cur / (*it); j++)
-			{
-				set<int>::iterator tt = s.find((*it) * j);
-				if (tt == s.end())
-				{
-					flag = false;
-					break;
-				}
-			}
-			if (flag)
-				cout << *it << " ";
-		}
-	}
-	return 0;
-}
 
-</code></pre>
-  </body>
-</html>		
+	Explain the Spring MVC module
+	
+	MVC framework is provided by Spring for building web applications. Spring can easily be integrated with other MVC frameworks, but Spring’s MVC framework is a better choice, since it uses IoC to provide for a clean separation of controller logic from business objects. With Spring MVC you can declaratively bind request parameters to your business objects.
+	
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

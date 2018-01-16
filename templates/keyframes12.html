@@ -1,70 +1,57 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<!-- HTML generated using hilite.me -->
+  <br><br><br><br>
+  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Collections.Generic</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Linq</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Text</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Threading.Tasks</span>;
 
-	<pre class="language-cpp"><code>
-
-
-
-
-
-
-//find-median.cpp
-//Find the Median
-
-#include&ltiostream&gt
-#include&ltcstdlib&gt
-#include&ltctime&gt
-#include&ltalgorithm&gt
-using namespace std;
-
-int a[1000002];
-
-int partition(int ar[], int l, int r)
-{
-	int idx = rand() % (r - l + 1) + l;
-	swap(ar[idx], ar[r]);
-	int pivot = ar[r], cur = l;
-	for (int i = l; i < r; i++)
-		if (a[i] <= pivot)
-			swap(a[i], a[cur++]);
-	swap(ar[r], ar[cur]);
-	return cur;
-}
-
-int quicksort(int ar[], int l, int r, int idx)
-{
-	if (l < r)
+	<span style="color: #008800; font-weight: bold">namespace</span> <span style="color: #0e84b5; font-weight: bold">AngryChildren</span>
 	{
-		int m = partition(ar, l, r);
-		if (idx == m - l + 1) return ar[m];
-		else if (idx <= m - l)
-			return quicksort(ar, l, m - 1, idx);
-		else
-			return quicksort(ar, m + 1, r, idx - (m - l + 1));
-	}
-	else
+    <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span>
+    {
+	<span style="color: #008800; font-weight: bold">private</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span>[] mySet;
+
+	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">string</span> <span style="color: #0066BB; font-weight: bold">AngryChildren</span>(<span style="color: #333399; font-weight: bold">int</span> k)
 	{
-		return ar[l];
+	Array.Sort(mySet);
+
+	<span style="color: #333399; font-weight: bold">int</span> currentMin = <span style="color: #6600EE; font-weight: bold">0</span>;
+	<span style="color: #333399; font-weight: bold">int</span> currentMax = k - <span style="color: #6600EE; font-weight: bold">1</span>;
+	<span style="color: #333399; font-weight: bold">int</span> unfairness = Int32.MaxValue;
+	<span style="color: #333399; font-weight: bold">int</span> currentUnfairness = <span style="color: #6600EE; font-weight: bold">0</span>;
+
+	<span style="color: #008800; font-weight: bold">while</span> (currentMax &lt; mySet.Length)
+	{
+	currentUnfairness = Math.Abs(mySet[currentMax] - mySet[currentMin]);
+
+	<span style="color: #008800; font-weight: bold">if</span> (currentUnfairness &lt; unfairness)
+	unfairness = currentUnfairness;
+
+	++currentMax;
+	++currentMin;
 	}
-}
 
-int main()
-{
-	srand((unsigned int)time(0));
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; i++)
-		cin >> a[i];
-	cout << quicksort(a, 0, n - 1, (n + 1) / 2) << endl;
-	return 0;
-}
+	<span style="color: #008800; font-weight: bold">return</span> unfairness.ToString();
+	}
 
-        </code></pre>
-  </body>
-</html>		
+	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">Main</span>(<span style="color: #333399; font-weight: bold">string</span>[] args)
+	{
+	<span style="color: #333399; font-weight: bold">int</span> n = Convert.ToInt32(Console.ReadLine().Trim());
+	mySet = <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">int</span>[n];
+	<span style="color: #333399; font-weight: bold">int</span> k = Convert.ToInt32(Console.ReadLine().Trim());
+
+	<span style="color: #008800; font-weight: bold">while</span> (n &gt; <span style="color: #6600EE; font-weight: bold">0</span>)
+	{
+	n--;
+	<span style="color: #333399; font-weight: bold">int</span> item = Convert.ToInt32(Console.ReadLine());
+	mySet[n] = item;
+
+	}
+
+	Console.WriteLine(AngryChildren(k));
+	}
+    }
+	}
+  </pre></div>
 

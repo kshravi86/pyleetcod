@@ -1,49 +1,94 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-cpp"><code>
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
 
 
+  <div style="color:blue;">
+	<br><p style="color:red;"> Explain the web module
+	  
+	</p>
 
-#include&ltiostream&gt
-using namespace std;
 
-int s[100000];
 
-int gcd(int a,int b)
-{
-	return b ? gcd(b, a%b) : a;
-}
 
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	int t;
-	cin >> t;
-	while (t--)
-	{
-		int n, k;
-		cin >> n >> k;
-		int val = -1;
-		for (int i = 0; i < n; i++)
-		{
-			cin >> s[i];
-			if (s[i] % k == 0)
-			{
-				if (val == -1) val = s[i];
-				else val = gcd(val, s[i]);
-			}
-		}
-		cout << (val == k ? "YES" : "NO") << endl;
-	}
-	return 0;
-}
 
-</code></pre>
-  </body>
-</html>		
+	
+	The Spring web module is built on the application context module, providing a context that is appropriate for web-based applications. This module also contains support for several web-oriented tasks such as transparently handling multipart requests for file uploads and programmatic binding of request parameters to your business objects. It also contains integration support with Jakarta Struts.
+	
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

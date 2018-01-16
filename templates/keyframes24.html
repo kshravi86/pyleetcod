@@ -1,48 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<!-- HTML generated using hilite.me -->
+  <br><br><br><br>
+  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Collections.Generic</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Linq</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Text</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Threading.Tasks</span>;
 
-	<pre class="language-cpp"><code>
-
-
-
-#include&ltiostream&gt
-#include&ltalgorithm&gt
-#include&ltfunctional&gt
-using namespace std;
-
-int a[1000], b[1000];
-
-int main()
-{
-	int t;
-	cin >> t;
-	while (t--)
+	<span style="color: #008800; font-weight: bold">namespace</span> <span style="color: #0e84b5; font-weight: bold">CSharp</span>
 	{
-		int n, k;
-		cin >> n >> k;
-		for (int i = 0; i < n; i++)
-			cin >> a[i];
-		for (int i = 0; i < n; i++)
-			cin >> b[i];
-		sort(a, a + n);
-		sort(b, b + n, greater<int>());
-		bool flag = true;
-		for (int i = 0; i < n;i++)
-			if (a[i] + b[i] < k)
-			{
-				flag = false;
-				break;
-			}
-		cout << (flag ? "YES" : "NO") << endl;
+    <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">BdayGift</span>
+    {
+	<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">Main</span>(String[] args)
+	{
+	<span style="color: #333399; font-weight: bold">int</span> num = <span style="color: #333399; font-weight: bold">int</span>.Parse(Console.ReadLine());
+	<span style="color: #333399; font-weight: bold">long</span> tot = <span style="color: #6600EE; font-weight: bold">0</span>;
+
+	<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i = <span style="color: #6600EE; font-weight: bold">0</span>; i &lt; num; i++)
+	tot += <span style="color: #333399; font-weight: bold">long</span>.Parse(Console.ReadLine());
+
+	<span style="color: #333399; font-weight: bold">long</span> val = tot / <span style="color: #6600EE; font-weight: bold">2</span>;
+	<span style="color: #333399; font-weight: bold">string</span> end = <span style="background-color: #fff0f0">&quot;.5&quot;</span>;
+
+	<span style="color: #008800; font-weight: bold">if</span> (tot % <span style="color: #6600EE; font-weight: bold">2</span> == <span style="color: #6600EE; font-weight: bold">0</span>)
+	end = <span style="background-color: #fff0f0">&quot;.0&quot;</span>;
+
+	Console.WriteLine(val + end);
 	}
-}
+    }
+	}
+  </pre></div>
 
-
-        </code></pre>
-  </body>
-</html>		

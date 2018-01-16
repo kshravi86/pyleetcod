@@ -1,42 +1,75 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<!-- HTML generated using hilite.me -->
+  <br><br><br><br>
+  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Collections.Generic</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Linq</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Text</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Threading.Tasks</span>;
 
-	<pre class="language-cpp"><code>
-
-
-
-
-
-
-
-//lonely-integer.cpp
-//Lonely Integer
-
-
-#include&ltiostream&gt
-using namespace std;
-
-int main()
-{
-	int n;
-	cin >> n;
-	int sum = 0, val;
-	for (int i = 0; i &lt n; i++)
+	<span style="color: #008800; font-weight: bold">namespace</span> <span style="color: #0e84b5; font-weight: bold">HackerRank</span>
 	{
-		cin >> val;
-		sum ^= val;
+    <span style="color: #888888">// https://www.hackerrank.com/challenges/anagram</span>
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Anagram</span>
+    {
+	<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">Main</span>(<span style="color: #333399; font-weight: bold">string</span>[] args)
+	{
+
+	<span style="color: #333399; font-weight: bold">int</span> T = Int32.Parse(Console.ReadLine().Trim());
+
+	<span style="color: #008800; font-weight: bold">do</span>
+	{
+	T--;
+
+	Console.WriteLine(Solve(Console.ReadLine().Trim()));
+
 	}
-	cout &lt&lt sum &lt&lt endl;
-	return 0;
-}
+	<span style="color: #008800; font-weight: bold">while</span> (T &gt; <span style="color: #6600EE; font-weight: bold">0</span>);
+	}
 
 
+	<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">Solve</span>(String word)
+	{
+	<span style="color: #333399; font-weight: bold">int</span>[] count = <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">int</span>[<span style="color: #6600EE; font-weight: bold">26</span>];
+	<span style="color: #333399; font-weight: bold">int</span> length = word.Length;
+	<span style="color: #333399; font-weight: bold">int</span> sum = <span style="color: #6600EE; font-weight: bold">0</span>;
+	<span style="color: #333399; font-weight: bold">int</span> i = <span style="color: #6600EE; font-weight: bold">0</span>;
 
-	  </code></pre>
-  </body>
-</html>		
+	<span style="color: #008800; font-weight: bold">for</span> (i = <span style="color: #6600EE; font-weight: bold">0</span>; i &lt; <span style="color: #6600EE; font-weight: bold">26</span>; i++)
+	count[i] = <span style="color: #6600EE; font-weight: bold">0</span>;
+
+
+	<span style="color: #008800; font-weight: bold">if</span> (length % <span style="color: #6600EE; font-weight: bold">2</span> == <span style="color: #6600EE; font-weight: bold">1</span>)
+	<span style="color: #008800; font-weight: bold">return</span> -<span style="color: #6600EE; font-weight: bold">1</span>;
+
+	<span style="color: #008800; font-weight: bold">else</span>
+	{
+	<span style="color: #008800; font-weight: bold">for</span> (i = <span style="color: #6600EE; font-weight: bold">0</span>; i &lt; length / <span style="color: #6600EE; font-weight: bold">2</span>; i++)
+	count[word[i] - <span style="color: #0044DD">&#39;a&#39;</span>]++;
+
+	<span style="color: #008800; font-weight: bold">for</span> (i = length / <span style="color: #6600EE; font-weight: bold">2</span>; i &lt; length; i++)
+	count[word[i] - <span style="color: #0044DD">&#39;a&#39;</span>]--;
+
+	<span style="color: #008800; font-weight: bold">for</span> (i = <span style="color: #6600EE; font-weight: bold">0</span>; i &lt; <span style="color: #6600EE; font-weight: bold">26</span>; i++)
+	{
+	sum = sum + mod(count[i]);
+	}
+
+	sum = sum / <span style="color: #6600EE; font-weight: bold">2</span>;
+	}
+
+
+	<span style="color: #008800; font-weight: bold">return</span> sum;
+	}
+
+	<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">mod</span>(<span style="color: #333399; font-weight: bold">int</span> x)
+	{
+	<span style="color: #008800; font-weight: bold">if</span> (x &lt; <span style="color: #6600EE; font-weight: bold">0</span>)
+	<span style="color: #008800; font-weight: bold">return</span> (-<span style="color: #6600EE; font-weight: bold">1</span>) * x;
+
+	<span style="color: #008800; font-weight: bold">else</span>
+	<span style="color: #008800; font-weight: bold">return</span> x;
+	}
+    }
+	}
+  </pre></div>
+

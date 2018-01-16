@@ -1,48 +1,65 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<!-- HTML generated using hilite.me -->
+  <br><br><br><br>
+  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Collections.Generic</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Linq</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Text</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Threading.Tasks</span>;
 
-	<pre class="language-cpp"><code>
-
-
-
-
-#include&ltiostream&gt
-#include&ltstring&gt
-#include&ltalgorithm&gt
-using namespace std;
-
-int cnt[26];
-
-int main()
-{
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; i++)
+	<span style="color: #008800; font-weight: bold">namespace</span> <span style="color: #0e84b5; font-weight: bold">ChocolateFeast</span>
 	{
-		string str;
-		cin >> str;
-		int len = (int)str.size();
-		bool hash[26];
-		fill(hash, hash + 26, false);
-		for (int j = 0; j < len; j++)
-			hash[str[j] - 'a'] = true;
-		for (int j = 0; j < 26; j++)
-			if (hash[j])
-				cnt[j]++;
-	}
-	int ans = 0;
-	for (int i = 0; i < 26; i++)
-		if (cnt[i] == n)
-			ans++;
-	cout << ans << endl;
-	return 0;
-}
+    <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span>
+    {
+	<span style="color: #888888">// 2 &lt;= N &lt;= 100000</span>
+	<span style="color: #888888">// 1 &lt;= C &lt;= N</span>
+	<span style="color: #888888">// 2 &lt;= M &lt;= N</span>
+	<span style="color: #888888">// Goes to store with $N bill with $C being the price of each chocolate.</span>
+	<span style="color: #888888">// For every M wrappers he gives the store, he&#39;ll get one chocolate for free.</span>
+	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">string</span> <span style="color: #0066BB; font-weight: bold">NumberChocolates</span>(<span style="color: #333399; font-weight: bold">int</span> n, <span style="color: #333399; font-weight: bold">int</span> c, <span style="color: #333399; font-weight: bold">int</span> m)
+	{
+	<span style="color: #333399; font-weight: bold">int</span> totalChocolates = <span style="color: #6600EE; font-weight: bold">0</span>;
 
-   </code></pre>
-  </body>
-</html>		
+	<span style="color: #333399; font-weight: bold">int</span> baseNumChocolates = n / c;
+	totalChocolates += baseNumChocolates;
+
+	<span style="color: #333399; font-weight: bold">int</span> additionalChocolates = baseNumChocolates / m; <span style="color: #888888">// From wrappers.</span>
+	totalChocolates += additionalChocolates;
+
+	<span style="color: #333399; font-weight: bold">int</span> remainingWrappers = baseNumChocolates % m;
+	<span style="color: #333399; font-weight: bold">int</span> totalWrappers = remainingWrappers + additionalChocolates;
+
+	<span style="color: #008800; font-weight: bold">while</span> (totalWrappers &gt;= m)
+	{
+	baseNumChocolates = totalWrappers / m;
+	remainingWrappers = totalWrappers % m;
+	totalChocolates += baseNumChocolates;
+	totalWrappers = remainingWrappers + baseNumChocolates;
+	}
+
+	<span style="color: #008800; font-weight: bold">return</span> totalChocolates.ToString();
+	}
+
+	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">Main</span>(<span style="color: #333399; font-weight: bold">string</span>[] args)
+	{
+	<span style="color: #333399; font-weight: bold">int</span> numTestCases = Convert.ToInt32(Console.ReadLine().Trim());
+
+	<span style="color: #008800; font-weight: bold">while</span> (numTestCases &gt; <span style="color: #6600EE; font-weight: bold">0</span>)
+	{
+	<span style="color: #333399; font-weight: bold">string</span> testCase = Console.ReadLine().Trim();
+	<span style="color: #333399; font-weight: bold">string</span>[] testCaseValues = testCase.Split(<span style="color: #0044DD">&#39; &#39;</span>);
+
+	<span style="color: #333399; font-weight: bold">int</span> n = Convert.ToInt32(testCaseValues[<span style="color: #6600EE; font-weight: bold">0</span>]);
+	<span style="color: #333399; font-weight: bold">int</span> c = Convert.ToInt32(testCaseValues[<span style="color: #6600EE; font-weight: bold">1</span>]);
+	<span style="color: #333399; font-weight: bold">int</span> m = Convert.ToInt32(testCaseValues[<span style="color: #6600EE; font-weight: bold">2</span>]);
+
+	<span style="color: #333399; font-weight: bold">string</span> numChocolates = NumberChocolates(n, c, m);
+	Console.WriteLine(numChocolates);
+
+	numTestCases--;
+	}
+	Console.ReadLine();
+	}
+    }
+	}
+  </pre></div>
+

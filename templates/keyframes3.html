@@ -1,77 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<!-- HTML generated using hilite.me -->
+  <br><br><br><br>
+  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">	import java.util.*
 
-	<pre class="language-cpp"><code>
-
-
-		
-
-
-
-
-
-//cut-the-tree.cpp
-//Cut the tree
-
-
-#include&ltiostream&gt
-#include&ltvector&gt
-#include&ltclimits&gt
-using namespace std;
-
-int value[100001], n, tot, best;
-vector&ltvector&ltint&gt  v;
-bool visited[100001];
-int sum[100001];
-
-int dfs(int node)
-{
-	int ret = 0;
-	visited[node] = true;
-	int sz = (int)v[node].size();
-	for (int i = 0; i < sz; i++)
-	{
-		int next = v[node][i];
-		if (!visited[next])
-			ret += dfs(next);
+	<span style="color: #008800; font-weight: bold">fun</span> &lt;T, C: MutableCollection&lt;T&gt;&gt; Collection&lt;T&gt;.partitionTo(first: C, second: C, predicate: (T) -&gt; Boolean): Pair&lt;C, C&gt; {
+	<span style="color: #008800; font-weight: bold">for</span> (element <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">this</span>) {
+	<span style="color: #008800; font-weight: bold">if</span> (predicate(element)) {
+	first.add(element)
+	} <span style="color: #008800; font-weight: bold">else</span> {
+	second.add(element)
 	}
-	return sum[node] = value[node] + ret;
-}
-
-int main()
-{
-	best = INT_MAX;
-	tot = 0;
-	cin >> n;
-	for (int i = 1; i <= n; i++)
-	{
-		cin >> value[i];
-		tot += value[i];
 	}
-	v.resize(n + 1);
-	for (int i = 0; i < n - 1; i++)
-	{
-		int a, b;
-		cin >> a >> b;
-		v[a].push_back(b);
-		v[b].push_back(a);
+	<span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">Pair</span>(first, second)
 	}
-	dfs(1);
-	for (int i = 1; i <= n; i++)
-		if (abs(tot - sum[i] - sum[i]) < best)
-			best = abs(tot - sum[i] - sum[i]);
-	cout << best << endl;
-	return 0;
-}
 
+	<span style="color: #008800; font-weight: bold">fun</span> <span style="color: #0066BB; font-weight: bold">partitionWordsAndLines</span>() {
+	<span style="color: #008800; font-weight: bold">val</span> (words, lines) = listOf(<span style="background-color: #fff0f0">&quot;a&quot;</span>, <span style="background-color: #fff0f0">&quot;a b&quot;</span>, <span style="background-color: #fff0f0">&quot;c&quot;</span>, <span style="background-color: #fff0f0">&quot;d e&quot;</span>).
+	partitionTo(ArrayList&lt;String&gt;(), ArrayList()) { s -&gt; !s.contains(<span style="background-color: #fff0f0">&quot; &quot;</span>) }
+	words == listOf(<span style="background-color: #fff0f0">&quot;a&quot;</span>, <span style="background-color: #fff0f0">&quot;c&quot;</span>)
+	lines == listOf(<span style="background-color: #fff0f0">&quot;a b&quot;</span>, <span style="background-color: #fff0f0">&quot;d e&quot;</span>)
+	}
 
+	<span style="color: #008800; font-weight: bold">fun</span> <span style="color: #0066BB; font-weight: bold">partitionLettersAndOtherSymbols</span>() {
+	<span style="color: #008800; font-weight: bold">val</span> (letters, other) = setOf(<span style="color: #0044DD">&#39;a&#39;</span>, <span style="color: #0044DD">&#39;%&#39;</span>, <span style="color: #0044DD">&#39;r&#39;</span>, <span style="color: #0044DD">&#39;}&#39;</span>).
+	partitionTo(HashSet&lt;Char&gt;(), HashSet()) { c -&gt; c <span style="color: #008800; font-weight: bold">in</span> <span style="color: #0044DD">&#39;a&#39;</span>..<span style="color: #0044DD">&#39;z&#39;</span> || c <span style="color: #008800; font-weight: bold">in</span> <span style="color: #0044DD">&#39;A&#39;</span>..<span style="color: #0044DD">&#39;Z&#39;</span>}
+	letters == setOf(<span style="color: #0044DD">&#39;a&#39;</span>, <span style="color: #0044DD">&#39;r&#39;</span>)
+	other == setOf(<span style="color: #0044DD">&#39;%&#39;</span>, <span style="color: #0044DD">&#39;}&#39;</span>)
+	}
+  </pre></div>
 
-        
-        </code></pre>
-  </body>
-</html>		

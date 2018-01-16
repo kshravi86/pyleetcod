@@ -1,50 +1,69 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<!-- HTML generated using hilite.me -->
+  <br><br><br><br>
+  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System</span>;
+	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Collections.Generic</span>;
 
-	<pre class="language-cpp"><code>
-
-
-
-
-
-
-#include&ltiostream&gt
-#include&ltvector&gt
-#include&ltalgorithm&gt
-using namespace std;
-
-int main()
-{
-	int n, k;
-	cin >> n >> k;
-	vector<int> v;
-	for (int i = 0; i < n; i++)
+	<span style="color: #008800; font-weight: bold">namespace</span> <span style="color: #0e84b5; font-weight: bold">ClosestNumbers</span>
 	{
-		int num;
-		cin >> num;
-		v.push_back(num);
-	}
-	sort(v.begin(), v.end());
-	long long sum = 0;
-	int ret = 0;
-	for (int i = 0; i < n; i++)
+    <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span>
+    {
+	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">string</span> <span style="color: #0066BB; font-weight: bold">ClosestNumbers</span>(<span style="color: #333399; font-weight: bold">int</span>[] a)
 	{
-		sum += v[i];
-		if (sum >= k)
-			break;
-		ret++;
+	<span style="color: #888888">// The minimum difference will be one of the differences from the consecutive pairs in sorted order.</span>
+	Array.Sort(a);
+
+	Dictionary&lt;<span style="color: #333399; font-weight: bold">int</span>, List&lt;<span style="color: #333399; font-weight: bold">int</span>&gt;&gt; dict = <span style="color: #008800; font-weight: bold">new</span> Dictionary&lt;<span style="color: #333399; font-weight: bold">int</span>, List&lt;<span style="color: #333399; font-weight: bold">int</span>&gt;&gt;();
+
+	<span style="color: #333399; font-weight: bold">int</span> minDiff = a[<span style="color: #6600EE; font-weight: bold">1</span>] - a[<span style="color: #6600EE; font-weight: bold">0</span>];
+	List&lt;<span style="color: #333399; font-weight: bold">int</span>&gt; newList = <span style="color: #008800; font-weight: bold">new</span> List&lt;<span style="color: #333399; font-weight: bold">int</span>&gt;();
+	newList.Add(a[<span style="color: #6600EE; font-weight: bold">0</span>]);
+
+	dict.Add(minDiff, newList);
+	dict[minDiff].Add(a[<span style="color: #6600EE; font-weight: bold">1</span>]);
+
+	<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i = <span style="color: #6600EE; font-weight: bold">2</span>; i &lt; a.Length; i++)
+	{
+	<span style="color: #333399; font-weight: bold">int</span> numberDifference = a[i] - a[i - <span style="color: #6600EE; font-weight: bold">1</span>];
+	minDiff = Math.Min(minDiff, numberDifference);
+
+	<span style="color: #008800; font-weight: bold">if</span> (dict.ContainsKey(numberDifference))
+	{
+	dict[numberDifference].Add(a[i - <span style="color: #6600EE; font-weight: bold">1</span>]);
+	dict[numberDifference].Add(a[i]);
 	}
-	cout << ret << endl;
-	return 0;
-}
+	<span style="color: #008800; font-weight: bold">else</span>
+	{
+	newList = <span style="color: #008800; font-weight: bold">new</span> List&lt;<span style="color: #333399; font-weight: bold">int</span>&gt;();
+	newList.Add(a[i - <span style="color: #6600EE; font-weight: bold">1</span>]);
 
+	dict.Add(numberDifference, newList);
+	dict[numberDifference].Add(a[i]);
+	}
+	}
 
+	<span style="color: #008800; font-weight: bold">return</span> <span style="color: #333399; font-weight: bold">string</span>.Join(<span style="background-color: #fff0f0">&quot; &quot;</span>, dict[minDiff]);
+	}
 
-        </code></pre>
-  </body>
-</html>		
+	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">Main</span>(String[] args)
+	{
+	<span style="color: #333399; font-weight: bold">string</span> smallestDiffPairs;
+	<span style="color: #333399; font-weight: bold">int</span> _a_size = Convert.ToInt32(Console.ReadLine().Trim());
+	<span style="color: #333399; font-weight: bold">int</span>[] _a = <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">int</span>[_a_size];
+	<span style="color: #333399; font-weight: bold">int</span> _a_item;
+
+	String move = Console.ReadLine().Trim();
+	String[] move_split = move.Split(<span style="color: #0044DD">&#39; &#39;</span>);
+
+	<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i = <span style="color: #6600EE; font-weight: bold">0</span>; i &lt; move_split.Length; i++)
+	{
+	_a_item = Convert.ToInt32(move_split[i]);
+	_a[i] = _a_item;
+	}
+
+	smallestDiffPairs = ClosestNumbers(_a);
+	Console.WriteLine(smallestDiffPairs);
+	}
+    }
+	}
+  </pre></div>
+
