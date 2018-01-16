@@ -1,95 +1,61 @@
-
-<div class="content" 
-  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
-
-
-  <div style="color:blue;">
-	<br><p style="color:red;"> How do you define the scope of a bean?</p>
-	
-
-
-
-
-
-
-	
-	When defining a bean in Spring, we can also declare a scope for the bean. It can be defined through the scope attribute in the bean definition. For example, when Spring has to produce a new bean instance each time one is needed, the bean’s scope attribute to be prototype. On the other hand, when the same instance of a bean must be returned by Spring every time it is needed, the the bean scope attribute must be set to singleton.
-
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
- 
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+
+<pre class="language-java"><code>
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
+
+public class Semaphore1 {
+
+    private static final int NUM_INCREMENTS = 10000;
+
+    private static Semaphore semaphore = new Semaphore(1);
+
+    private static int count = 0;
+
+    public static void main(String[] args) {
+        testIncrement();
+    }
+
+    private static void testIncrement() {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+        IntStream.range(0, NUM_INCREMENTS)
+                .forEach(i -> executor.submit(Semaphore1::increment));
+
+        ConcurrentUtils.stop(executor);
+
+        System.out.println("Increment: " + count);
+    }
+
+    private static void increment() {
+        boolean permit = false;
+        try {
+            permit = semaphore.tryAcquire(5, TimeUnit.SECONDS);
+            count++;
+        }
+        catch (InterruptedException e) {
+            throw new RuntimeException("could not increment");
+        }
+        finally {
+            if (permit) {
+                semaphore.release();
+            }
+        }
+    }
+
+}
+
+ </code></pre>
+  </body>
+</html>		

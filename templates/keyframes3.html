@@ -1,30 +1,46 @@
-<!-- HTML generated using hilite.me -->
-  <br><br><br><br>
-  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">	import java.util.*
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<span style="color: #008800; font-weight: bold">fun</span> &lt;T, C: MutableCollection&lt;T&gt;&gt; Collection&lt;T&gt;.partitionTo(first: C, second: C, predicate: (T) -&gt; Boolean): Pair&lt;C, C&gt; {
-	<span style="color: #008800; font-weight: bold">for</span> (element <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">this</span>) {
-	<span style="color: #008800; font-weight: bold">if</span> (predicate(element)) {
-	first.add(element)
-	} <span style="color: #008800; font-weight: bold">else</span> {
-	second.add(element)
-	}
-	}
-	<span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">Pair</span>(first, second)
-	}
+<pre class="language-java"><code>
 
-	<span style="color: #008800; font-weight: bold">fun</span> <span style="color: #0066BB; font-weight: bold">partitionWordsAndLines</span>() {
-	<span style="color: #008800; font-weight: bold">val</span> (words, lines) = listOf(<span style="background-color: #fff0f0">&quot;a&quot;</span>, <span style="background-color: #fff0f0">&quot;a b&quot;</span>, <span style="background-color: #fff0f0">&quot;c&quot;</span>, <span style="background-color: #fff0f0">&quot;d e&quot;</span>).
-	partitionTo(ArrayList&lt;String&gt;(), ArrayList()) { s -&gt; !s.contains(<span style="background-color: #fff0f0">&quot; &quot;</span>) }
-	words == listOf(<span style="background-color: #fff0f0">&quot;a&quot;</span>, <span style="background-color: #fff0f0">&quot;c&quot;</span>)
-	lines == listOf(<span style="background-color: #fff0f0">&quot;a b&quot;</span>, <span style="background-color: #fff0f0">&quot;d e&quot;</span>)
-	}
+import java.util.ArrayList;
+import java.util.List;
+public class Streams2 {
 
-	<span style="color: #008800; font-weight: bold">fun</span> <span style="color: #0066BB; font-weight: bold">partitionLettersAndOtherSymbols</span>() {
-	<span style="color: #008800; font-weight: bold">val</span> (letters, other) = setOf(<span style="color: #0044DD">&#39;a&#39;</span>, <span style="color: #0044DD">&#39;%&#39;</span>, <span style="color: #0044DD">&#39;r&#39;</span>, <span style="color: #0044DD">&#39;}&#39;</span>).
-	partitionTo(HashSet&lt;Char&gt;(), HashSet()) { c -&gt; c <span style="color: #008800; font-weight: bold">in</span> <span style="color: #0044DD">&#39;a&#39;</span>..<span style="color: #0044DD">&#39;z&#39;</span> || c <span style="color: #008800; font-weight: bold">in</span> <span style="color: #0044DD">&#39;A&#39;</span>..<span style="color: #0044DD">&#39;Z&#39;</span>}
-	letters == setOf(<span style="color: #0044DD">&#39;a&#39;</span>, <span style="color: #0044DD">&#39;r&#39;</span>)
-	other == setOf(<span style="color: #0044DD">&#39;%&#39;</span>, <span style="color: #0044DD">&#39;}&#39;</span>)
-	}
-  </pre></div>
+    public static void main(String[] args) {
 
+        List<String> stringCollection = new ArrayList<>();
+        stringCollection.add("ddd2");
+        stringCollection.add("aaa2");
+        stringCollection.add("bbb1");
+        stringCollection.add("aaa1");
+        stringCollection.add("bbb3");
+        stringCollection.add("ccc");
+        stringCollection.add("bbb2");
+        stringCollection.add("ddd1");
+
+
+        // sorting
+
+        stringCollection
+                .stream()
+                .sorted()
+                .forEach(System.out::println);
+
+        System.out.println(stringCollection);
+
+        
+
+    }
+
+}
+ 
+       </code></pre>
+  </body>
+</html>		
+     

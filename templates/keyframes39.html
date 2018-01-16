@@ -1,94 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-<div class="content" 
-  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
 
+<pre class="language-java"><code>
 
-  <div style="color:blue;">
-	<br><p style="color:red;"> Explain the Spring MVC module
-	</p>
 
+public class Lambda2 {
 
+    @FunctionalInterface
+    public static interface Converter<F, T> {
+        T convert(F from);
+    }
 
+    static class Something {
+        String startsWith(String s) {
+            return String.valueOf(s.charAt(0));
+        }
+    }
 
+    interface PersonFactory<P extends Person> {
+        P create(String firstName, String lastName);
+    }
 
-	Explain the Spring MVC module
-	
-	MVC framework is provided by Spring for building web applications. Spring can easily be integrated with other MVC frameworks, but Spring’s MVC framework is a better choice, since it uses IoC to provide for a clean separation of controller logic from business objects. With Spring MVC you can declaratively bind request parameters to your business objects.
-	
-	</div>
+    public static void main(String[] args) {
+        Converter<String, Integer> integerConverter1 = (from) -> Integer.valueOf(from);
+        Integer converted1 = integerConverter1.convert("123");
+        System.out.println(converted1);   // result: 123
 
 
+        // method reference
 
+        Converter<String, Integer> integerConverter2 = Integer::valueOf;
+        Integer converted2 = integerConverter2.convert("123");
+        System.out.println(converted2);   // result: 123
 
 
+        Something something = new Something();
 
+        Converter<String, String> stringConverter = something::startsWith;
+        String converted3 = stringConverter.convert("Java");
+        System.out.println(converted3);    // result J
 
+        // constructor reference
 
+        PersonFactory<Person> personFactory = Person::new;
+        Person person = personFactory.create("Peter", "Parker");
+    }
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
- 
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
+</code></pre>
+  </body>
+</html>		

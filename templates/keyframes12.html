@@ -1,57 +1,117 @@
-<!-- HTML generated using hilite.me -->
-  <br><br><br><br>
-  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Collections.Generic</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Linq</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Text</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Threading.Tasks</span>;
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<span style="color: #008800; font-weight: bold">namespace</span> <span style="color: #0e84b5; font-weight: bold">AngryChildren</span>
-	{
-    <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span>
-    {
-	<span style="color: #008800; font-weight: bold">private</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span>[] mySet;
+<pre class="language-java"><code>
 
-	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">string</span> <span style="color: #0066BB; font-weight: bold">AngryChildren</span>(<span style="color: #333399; font-weight: bold">int</span> k)
-	{
-	Array.Sort(mySet);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-	<span style="color: #333399; font-weight: bold">int</span> currentMin = <span style="color: #6600EE; font-weight: bold">0</span>;
-	<span style="color: #333399; font-weight: bold">int</span> currentMax = k - <span style="color: #6600EE; font-weight: bold">1</span>;
-	<span style="color: #333399; font-weight: bold">int</span> unfairness = Int32.MaxValue;
-	<span style="color: #333399; font-weight: bold">int</span> currentUnfairness = <span style="color: #6600EE; font-weight: bold">0</span>;
+/**
+ * @author Benjamin Winterberg
+ */
+public class Streams1 {
 
-	<span style="color: #008800; font-weight: bold">while</span> (currentMax &lt; mySet.Length)
-	{
-	currentUnfairness = Math.Abs(mySet[currentMax] - mySet[currentMin]);
+    public static void main(String[] args) {
 
-	<span style="color: #008800; font-weight: bold">if</span> (currentUnfairness &lt; unfairness)
-	unfairness = currentUnfairness;
+        List<String> stringCollection = new ArrayList<>();
+        stringCollection.add("ddd2");
+        stringCollection.add("aaa2");
+        stringCollection.add("bbb1");
+        stringCollection.add("aaa1");
+        stringCollection.add("bbb3");
+        stringCollection.add("ccc");
+        stringCollection.add("bbb2");
+        stringCollection.add("ddd1");
 
-	++currentMax;
-	++currentMin;
-	}
 
-	<span style="color: #008800; font-weight: bold">return</span> unfairness.ToString();
-	}
+        // filtering
 
-	<span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">Main</span>(<span style="color: #333399; font-weight: bold">string</span>[] args)
-	{
-	<span style="color: #333399; font-weight: bold">int</span> n = Convert.ToInt32(Console.ReadLine().Trim());
-	mySet = <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">int</span>[n];
-	<span style="color: #333399; font-weight: bold">int</span> k = Convert.ToInt32(Console.ReadLine().Trim());
+        stringCollection
+                .stream()
+                .filter((s) -> s.startsWith("a"))
+                .forEach(System.out::println);
 
-	<span style="color: #008800; font-weight: bold">while</span> (n &gt; <span style="color: #6600EE; font-weight: bold">0</span>)
-	{
-	n--;
-	<span style="color: #333399; font-weight: bold">int</span> item = Convert.ToInt32(Console.ReadLine());
-	mySet[n] = item;
+        // "aaa2", "aaa1"
 
-	}
 
-	Console.WriteLine(AngryChildren(k));
-	}
+        // sorting
+
+        stringCollection
+                .stream()
+                .sorted()
+                .filter((s) -> s.startsWith("a"))
+                .forEach(System.out::println);
+
+        // "aaa1", "aaa2"
+
+
+        // mapping
+
+        stringCollection
+                .stream()
+                .map(String::toUpperCase)
+                .sorted((a, b) -> b.compareTo(a))
+                .forEach(System.out::println);
+
+        // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
+
+
+        // matching
+
+        boolean anyStartsWithA = stringCollection
+                .stream()
+                .anyMatch((s) -> s.startsWith("a"));
+
+        System.out.println(anyStartsWithA);      // true
+
+        boolean allStartsWithA = stringCollection
+                .stream()
+                .allMatch((s) -> s.startsWith("a"));
+
+        System.out.println(allStartsWithA);      // false
+
+        boolean noneStartsWithZ = stringCollection
+                .stream()
+                .noneMatch((s) -> s.startsWith("z"));
+
+        System.out.println(noneStartsWithZ);      // true
+
+
+        // counting
+
+        long startsWithB = stringCollection
+                .stream()
+                .filter((s) -> s.startsWith("b"))
+                .count();
+
+        System.out.println(startsWithB);    // 3
+
+
+        // reducing
+
+        Optional<String> reduced =
+                stringCollection
+                        .stream()
+                        .sorted()
+                        .reduce((s1, s2) -> s1 + "#" + s2);
+
+        reduced.ifPresent(System.out::println);
+        // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
+
+
     }
-	}
-  </pre></div>
 
+}
+
+
+
+       </code></pre>
+  </body>
+</html>		
+     

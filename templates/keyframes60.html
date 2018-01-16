@@ -1,98 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-<div class="content" 
-  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+<pre class="language-java"><code>
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
+public class Streams3 {
 
-  <div style="color:blue;">
-	<br><p style="color:red;"> Which are the important beans lifecycle methods? Can you override them?
-	  
-	</p>
+    public static final int MAX = 1000000;
 
+    public static void sortSequential() {
+        List<String> values = new ArrayList<>(MAX);
+        for (int i = 0; i < MAX; i++) {
+            UUID uuid = UUID.randomUUID();
+            values.add(uuid.toString());
+        }
 
+        // sequential
 
+        long t0 = System.nanoTime();
 
+        long count = values.stream().sorted().count();
+        System.out.println(count);
 
+        long t1 = System.nanoTime();
 
+        long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+        System.out.println(String.format("sequential sort took: %d ms", millis));
+    }
 
+    public static void sortParallel() {
+        List<String> values = new ArrayList<>(MAX);
+        for (int i = 0; i < MAX; i++) {
+            UUID uuid = UUID.randomUUID();
+            values.add(uuid.toString());
+        }
 
-	
-	<br>There are two important bean lifecycle methods. The first one is setup which is called when the bean is loaded in to the container. The second method is the teardown method which is called when the bean is unloaded from the container.
-	<br>The bean tag has two important attributes (init-method and destroy-method) with which you can define your own custom initialization and destroy methods. There are also the correspondive annotations(@PostConstruct and @PreDestroy).
-	  
-	  </div>
+        // sequential
 
+        long t0 = System.nanoTime();
 
+        long count = values.parallelStream().sorted().count();
+        System.out.println(count);
 
+        long t1 = System.nanoTime();
 
+        long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+        System.out.println(String.format("parallel sort took: %d ms", millis));
+    }
 
+    public static void main(String[] args) {
+        sortSequential();
+        sortParallel();
+    }
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
- 
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
+  </code></pre>
+  </body>
+</html>		

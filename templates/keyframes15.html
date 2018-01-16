@@ -1,36 +1,32 @@
-<!-- HTML generated using hilite.me -->
-  <br><br><br><br>
-  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Collections.Generic</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Linq</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Text</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Text.RegularExpressions</span>;
-	<span style="color: #008800; font-weight: bold">using</span> <span style="color: #0e84b5; font-weight: bold">System.Threading.Tasks</span>;
+<!DOCTYPE html>
+<html>
+  <head>
+	<link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
 
-	<span style="color: #008800; font-weight: bold">namespace</span> <span style="color: #0e84b5; font-weight: bold">AlienUsername</span>
-	{
-    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span>
-    {
-	<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">Main</span>(<span style="color: #333399; font-weight: bold">string</span>[] args)
-	{
-	<span style="color: #333399; font-weight: bold">int</span> N = Int32.Parse(Console.ReadLine());
+	<pre class="language-java"><code>
+import java.util.Optional;
 
-	<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i = <span style="color: #6600EE; font-weight: bold">0</span>; i &lt; N; i++)
-	{
-	<span style="color: #333399; font-weight: bold">string</span> UserName = Console.ReadLine().Trim();
+public class Optional1 {
 
-	<span style="color: #008800; font-weight: bold">if</span> (Regex.IsMatch(UserName, <span style="background-color: #fff0f0">@&quot;^[_|\.][0-9]+[a-zA-Z]*_?$&quot;</span>))
-	{
-	Console.WriteLine(<span style="background-color: #fff0f0">&quot;VALID&quot;</span>);
-	}
+    public static void main(String[] args) {
+        Optional<String> optional = Optional.of("bam");
 
-	<span style="color: #008800; font-weight: bold">else</span>
-	{
-	Console.WriteLine(<span style="background-color: #fff0f0">&quot;INVALID&quot;</span>);
-	}
-	}
-	}
+        optional.isPresent();           // true
+        optional.get();                 // "bam"
+        optional.orElse("fallback");    // "bam"
+
+        optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
     }
-	}
-  </pre></div>
 
+}
+
+
+
+ 
+       </code></pre>
+  </body>
+</html>		
+     
