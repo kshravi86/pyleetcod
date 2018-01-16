@@ -1,61 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
-public class Semaphore1 {
-
-    private static final int NUM_INCREMENTS = 10000;
-
-    private static Semaphore semaphore = new Semaphore(1);
-
-    private static int count = 0;
-
-    public static void main(String[] args) {
-        testIncrement();
-    }
-
-    private static void testIncrement() {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(Semaphore1::increment));
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.println("Increment: " + count);
-    }
-
-    private static void increment() {
-        boolean permit = false;
-        try {
-            permit = semaphore.tryAcquire(5, TimeUnit.SECONDS);
-            count++;
-        }
-        catch (InterruptedException e) {
-            throw new RuntimeException("could not increment");
-        }
-        finally {
-            if (permit) {
-                semaphore.release();
-            }
-        }
-    }
-
-}
-
- </code></pre>
+# Time:  O(logn) = O(1)
+# Space: O(1)
+#
+# Write a program to check whether a given number is an ugly number.
+#
+# Ugly numbers are positive numbers whose prime factors only include
+# 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it
+# includes another prime factor 7.
+#
+# Note that 1 is typically treated as an ugly number.
+#
+class Solution:
+    # @param {integer} num
+    # @return {boolean}
+    def isUgly(self, num):
+        if num == 0:
+            return False
+        for i in [2, 3, 5]:
+            while num % i == 0:
+                num /= i
+        return num == 1
+        
+         </code></pre>
   </body>
 </html>		
+     
+        
+ 

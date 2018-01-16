@@ -1,92 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-
-<pre class="language-java"><code>
-
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.Callable;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-
-public class Lambda3 {
-
-    @FunctionalInterface
-    interface Fun {
-        void foo();
-    }
-
-    public static void main(String[] args) throws Exception {
-
-        // Predicates
-
-        Predicate<String> predicate = (s) -> s.length() > 0;
-
-        predicate.test("foo");              // true
-        predicate.negate().test("foo");     // false
-
-        Predicate<Boolean> nonNull = Objects::nonNull;
-        Predicate<Boolean> isNull = Objects::isNull;
-
-        Predicate<String> isEmpty = String::isEmpty;
-        Predicate<String> isNotEmpty = isEmpty.negate();
-
-
-        // Functions
-
-        Function<String, Integer> toInteger = Integer::valueOf;
-        Function<String, String> backToString = toInteger.andThen(String::valueOf);
-
-        backToString.apply("123");     // "123"
-
-
-        // Suppliers
-
-        Supplier<Person> personSupplier = Person::new;
-        personSupplier.get();   // new Person
-
-
-        // Consumers
-
-        Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.firstName);
-        greeter.accept(new Person("Luke", "Skywalker"));
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
 
-        // Comparators
 
-        Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
+# Time:  O(n), n is the total number of the bricks
+# Space: O(m), m is the total number different widths
 
-        Person p1 = new Person("John", "Doe");
-        Person p2 = new Person("Alice", "Wonderland");
+# There is a brick wall in front of you. The wall is rectangular and has several rows of bricks.
+# The bricks have the same height but different width. You want to draw a vertical line from
+# the top to the bottom and cross the least bricks.
+#
+# The brick wall is represented by a list of rows. Each row is a list of integers representing the
+# width of each brick in this row from left to right.
+#
+# If your line go through the edge of a brick, then the brick is not considered as crossed.
+# You need to find out how to draw the line to cross the least bricks and return the number of crossed bricks.
+#
+# You cannot draw a line just along one of the two vertical edges of the wall,
+# in which case the line will obviously cross no bricks.
+#
+# Example:
+# Input: 
+# [[1,2,2,1],
+#  [3,1,2],
+#  [1,3,2],
+#  [2,4],
+#  [3,1,2],
+#  [1,3,1,1]]
+# Output: 2
+#
+# Note:
+# The width sum of bricks in different rows are the same and won't exceed INT_MAX.
+# The number of bricks in each row is in range [1,10,000].
+# The height of wall is in range [1,10,000].
+# Total number of bricks of the wall won't exceed 20,000.
 
-        comparator.compare(p1, p2);             // > 0
-        comparator.reversed().compare(p1, p2);  // < 0
-
-
-        // Runnables
-
-        Runnable runnable = () -> System.out.println(UUID.randomUUID());
-        runnable.run();
-
-
-        // Callables
-
-        Callable<UUID> callable = UUID::randomUUID;
-        callable.call();
-    }
-
-}
-
-</code></pre>
+class Solution(object):
+    def leastBricks(self, wall):
+        """
+        :type wall: List[List[int]]
+        :rtype: int
+        """
+        widths = collections.defaultdict(int)
+        result = len(wall)
+        for row in wall:
+            width = 0
+            for i in xrange(len(row)-1):
+                width += row[i]
+                widths[width] += 1
+                result = min(result, len(wall) - widths[width]);
+        return result
+        
+        </code></pre>
   </body>
 </html>		
+     
+        
+   
+        

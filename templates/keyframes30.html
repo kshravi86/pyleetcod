@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.stream.IntStream;
+# Time:  O(n * 2^n)
+# Space: O(2^n)
+#
+# The count-and-say sequence is the sequence of integers beginning as follows:
+# 1, 11, 21, 1211, 111221, ...
+# 
+# 1 is read off as "one 1" or 11.
+# 11 is read off as "two 1s" or 21.
+# 21 is read off as "one 2, then one 1" or 1211.
+# Given an integer n, generate the nth sequence.
+# 
+# Note: The sequence of integers will be represented as a string.
+#
 
-public class Synchronized1 {
+class Solution:
+    # @return a string
+    def countAndSay(self, n):
+        seq = "1"
+        for i in xrange(n - 1):
+            seq = self.getNext(seq)
+        return seq
+    
+    def getNext(self, seq):
+        i, next_seq = 0, ""
+        while i < len(seq):
+            cnt = 1        
+            while i < len(seq) - 1 and seq[i] == seq[i + 1]:
+                cnt += 1
+                i += 1
+            next_seq += str(cnt) + seq[i]
+            i += 1
+        return next_seq
 
-    private static final int NUM_INCREMENTS = 10000;
-
-    private static int count = 0;
-
-    public static void main(String[] args) {
-        testSyncIncrement();
-        testNonSyncIncrement();
-    }
-
-    private static void testSyncIncrement() {
-        count = 0;
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(Synchronized1::incrementSync));
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.println("   Sync: " + count);
-    }
-
-    private static void testNonSyncIncrement() {
-        count = 0;
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(Synchronized1::increment));
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.println("NonSync: " + count);
-    }
-
-    private static synchronized void incrementSync() {
-        count = count + 1;
-    }
-
-    private static void increment() {
-        count = count + 1;
-    }
-
-}
-
-
-       </code></pre>
+if __name__ == "__main__":
+    for i in xrange(1, 4):
+        print Solution().countAndSay(i)
+        
+        
+        
+     </code></pre>
   </body>
 </html>		
+     
+        
+     
+
+        

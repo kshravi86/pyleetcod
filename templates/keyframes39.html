@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
+# Time:  O(m * n)
+# Space: O(m + n)
 
+from random import randint
 
-public class Lambda2 {
-
-    @FunctionalInterface
-    public static interface Converter<F, T> {
-        T convert(F from);
-    }
-
-    static class Something {
-        String startsWith(String s) {
-            return String.valueOf(s.charAt(0));
-        }
-    }
-
-    interface PersonFactory<P extends Person> {
-        P create(String firstName, String lastName);
-    }
-
-    public static void main(String[] args) {
-        Converter<String, Integer> integerConverter1 = (from) -> Integer.valueOf(from);
-        Integer converted1 = integerConverter1.convert("123");
-        System.out.println(converted1);   // result: 123
-
-
-        // method reference
-
-        Converter<String, Integer> integerConverter2 = Integer::valueOf;
-        Integer converted2 = integerConverter2.convert("123");
-        System.out.println(converted2);   // result: 123
-
-
-        Something something = new Something();
-
-        Converter<String, String> stringConverter = something::startsWith;
-        String converted3 = stringConverter.convert("Java");
-        System.out.println(converted3);    // result J
-
-        // constructor reference
-
-        PersonFactory<Person> personFactory = Person::new;
-        Person person = personFactory.create("Peter", "Parker");
-    }
-}
-
-
-</code></pre>
+class Solution(object):
+    def minTotalDistance(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        x = [i for i, row in enumerate(grid) for v in row if v == 1]
+        y = [j for row in grid for j, v in enumerate(row) if v == 1]
+        mid_x = self.findKthLargest(x, len(x) / 2 + 1)
+        mid_y = self.findKthLargest(y, len(y) / 2 + 1)
+        
+        return sum([abs(mid_x-i) + abs(mid_y-j) \
+                   for i, row in enumerate(grid) for j, v in enumerate(row) if v == 1])
+    
+    def findKthLargest(self, nums, k):
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            pivot_idx = randint(left, right)
+            new_pivot_idx = self.PartitionAroundPivot(left, right, pivot_idx, nums)
+            if new_pivot_idx == k - 1:
+                return nums[new_pivot_idx]
+            elif new_pivot_idx > k - 1:
+                right = new_pivot_idx - 1
+            else:  # new_pivot_idx < k - 1.
+                left = new_pivot_idx + 1
+        
+    def PartitionAroundPivot(self, left, right, pivot_idx, nums):
+        pivot_value = nums[pivot_idx]
+        new_pivot_idx = left
+        nums[pivot_idx], nums[right] = nums[right], nums[pivot_idx]
+        for i in xrange(left, right):
+            if nums[i] > pivot_value:
+                nums[i], nums[new_pivot_idx] =  nums[new_pivot_idx], nums[i]
+                new_pivot_idx += 1
+            
+        nums[right], nums[new_pivot_idx] = nums[new_pivot_idx], nums[right]
+        return new_pivot_idx
+        
+        
+         </code></pre>
   </body>
 </html>		
+     
+        

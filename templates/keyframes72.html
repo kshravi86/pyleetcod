@@ -1,92 +1,56 @@
-
-<div class="content" 
-  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
-
-
-  <div style="color:blue;">
-	<br><p style="color:red;"> What is bean auto wiring?
-	  
-	</p>
-
-
-
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
 	
-	The Spring container is able to autowire relationships between collaborating beans. This means that it is possible to automatically let Spring resolve collaborators (other beans) for a bean by inspecting the contents of the BeanFactory without using constructor-arg and property elements.
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
- 
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
+	<pre class="language-python"><code>
+	
+
+
+
+#Time:  O(n)
+# Space: O(1)
+
+# Given an array of integers, 1 <= a[i] <= n (n = size of array),
+# some elements appear twice and others appear once.
+# Find all the elements that appear twice in this array.
+# Could you do it without extra space and in O(n) runtime?
+#
+# Example:
+# Input
+#
+# [4,3,2,7,8,2,3,1]
+#
+# Output
+#
+# [2,3]
+
+class Solution(object):
+    def findDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        result = []
+        i = 0
+        while i < len(nums):
+            if nums[i] != nums[nums[i]-1]:
+                nums[nums[i]-1], nums[i] = nums[i], nums[nums[i]-1] 
+            else:
+                i += 1
+
+        for i in xrange(len(nums)):
+            if i != nums[i]-1:
+                result.append(nums[i])
+        return result
+        
+        
+         
+       </code></pre>
+  </body>
+</html>		
+     
+        

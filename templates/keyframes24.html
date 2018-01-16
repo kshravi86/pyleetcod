@@ -1,58 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
 
+# Time:  O(m * n)
+# Space: O(m * n)
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.IntStream;
+class Solution(object):
+    def maxKilledEnemies(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        result = 0
+        if not grid or not grid[0]:
+            return result
 
+        down = [[0 for _ in xrange(len(grid[0]))] for _ in xrange(len(grid))]
+        right = [[0 for _ in xrange(len(grid[0]))] for _ in xrange(len(grid))]
+        for i in reversed(xrange(len(grid))):
+            for j in reversed(xrange(len(grid[0]))):
+                if grid[i][j] != 'W':
+                    if i + 1 < len(grid):
+                        down[i][j] = down[i + 1][j]
+                    if j + 1 < len(grid[0]):
+                        right[i][j] = right[i][j + 1]
+                    if grid[i][j] == 'E':
+                        down[i][j] += 1
+                        right[i][j] += 1
 
-public class Lock1 {
+        up = [0 for _ in xrange(len(grid[0]))]
+        for i in xrange(len(grid)):
+            left = 0
+            for j in xrange(len(grid[0])):
+                if grid[i][j] == 'W':
+                    up[j], left = 0, 0
+                elif grid[i][j] == 'E':
+                    up[j] += 1
+                    left += 1
+                else:
+                    result = max(result, left + up[j] + right[i][j] + down[i][j])
 
-    private static final int NUM_INCREMENTS = 10000;
-
-    private static ReentrantLock lock = new ReentrantLock();
-
-    private static int count = 0;
-
-    private static void increment() {
-        lock.lock();
-        try {
-            count++;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    public static void main(String[] args) {
-        testLock();
-    }
-
-    private static void testLock() {
-        count = 0;
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                 .forEach(i -> executor.submit(Lock1::increment));
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.println(count);
-    }
-
-}
-
-
-       </code></pre>
+        return result
+        
+        
+        
+         </code></pre>
   </body>
 </html>		
+     

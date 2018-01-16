@@ -1,60 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
+# Time:  O(n)
+# Space: O(n)
+#
+# There are N children standing in a line. Each child is assigned a rating value.
+# 
+# You are giving candies to these children subjected to the following requirements:
+# 
+# Each child must have at least one candy.
+# Children with a higher rating get more candies than their neighbors.
+# What is the minimum candies you must give?
+#
 
-public class Executors1 {
+import operator
 
-    public static void main(String[] args) {
-        test1(3);
-//        test1(7);
-    }
-
-    private static void test1(long seconds) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.submit(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(seconds);
-                String name = Thread.currentThread().getName();
-                System.out.println("task finished: " + name);
-            }
-            catch (InterruptedException e) {
-                System.err.println("task interrupted");
-            }
-        });
-        stop(executor);
-    }
-
-    static void stop(ExecutorService executor) {
-        try {
-            System.out.println("attempt to shutdown executor");
-            executor.shutdown();
-            executor.awaitTermination(5, TimeUnit.SECONDS);
-        }
-        catch (InterruptedException e) {
-            System.err.println("termination interrupted");
-        }
-        finally {
-            if (!executor.isTerminated()) {
-                System.err.println("killing non-finished tasks");
-            }
-            executor.shutdownNow();
-            System.out.println("shutdown finished");
-        }
-    }
-}
-
-
- </code></pre>
+class Solution:
+    # @param ratings, a list of integer
+    # @return an integer
+    def candy(self, ratings):
+        candies = [1 for _ in xrange(len(ratings))]
+        for i in xrange(1, len(ratings)):
+            if ratings[i] > ratings[i - 1]:
+                candies[i] = candies[i - 1] + 1
+        
+        for i in reversed(xrange(1, len(ratings))):
+            if ratings[i - 1] > ratings[i] and candies[i - 1] <= candies[i]:
+                candies[i - 1] = candies[i] + 1
+        
+        return reduce(operator.add, candies)
+        
+if __name__ == "__main__":
+    result = Solution().candy([1, 2, 3, 2, 3, 5, 2, 5])
+    print result
+    
+    
+    </code></pre>
   </body>
 </html>		
+     
+        
+

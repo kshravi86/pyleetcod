@@ -1,117 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-/**
- * @author Benjamin Winterberg
- */
-public class Streams1 {
-
-    public static void main(String[] args) {
-
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("aaa1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc");
-        stringCollection.add("bbb2");
-        stringCollection.add("ddd1");
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-        // filtering
+# Time:  O(logn)
+# Space: O(1)
 
-        stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
+# You have a total of n coins that you want to form in a staircase shape,
+# where every k-th row must have exactly k coins.
+#
+# Given n, find the total number of full staircase rows that can be formed.
+#
+# n is a non-negative integer and fits within the range of a 32-bit signed integer.
+#
+# Example 1:
+#
+# n = 5
+#
+# The coins can form the following rows:
+# ¤
+# ¤ ¤
+# ¤ ¤
+#
+# Because the 3rd row is incomplete, we return 2.
+# Example 2:
+#
+# n = 8
+#
+# The coins can form the following rows:
+# ¤
+# ¤ ¤
+# ¤ ¤ ¤
+# ¤ ¤
+#
+# Because the 4th row is incomplete, we return 3.
 
-        // "aaa2", "aaa1"
-
-
-        // sorting
-
-        stringCollection
-                .stream()
-                .sorted()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
-
-        // "aaa1", "aaa2"
-
-
-        // mapping
-
-        stringCollection
-                .stream()
-                .map(String::toUpperCase)
-                .sorted((a, b) -> b.compareTo(a))
-                .forEach(System.out::println);
-
-        // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
-
-
-        // matching
-
-        boolean anyStartsWithA = stringCollection
-                .stream()
-                .anyMatch((s) -> s.startsWith("a"));
-
-        System.out.println(anyStartsWithA);      // true
-
-        boolean allStartsWithA = stringCollection
-                .stream()
-                .allMatch((s) -> s.startsWith("a"));
-
-        System.out.println(allStartsWithA);      // false
-
-        boolean noneStartsWithZ = stringCollection
-                .stream()
-                .noneMatch((s) -> s.startsWith("z"));
-
-        System.out.println(noneStartsWithZ);      // true
+class Solution(object):
+    def arrangeCoins(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return int((math.sqrt(8*n+1)-1) / 2)  # sqrt is O(logn) time.
 
 
-        // counting
-
-        long startsWithB = stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("b"))
-                .count();
-
-        System.out.println(startsWithB);    // 3
-
-
-        // reducing
-
-        Optional<String> reduced =
-                stringCollection
-                        .stream()
-                        .sorted()
-                        .reduce((s1, s2) -> s1 + "#" + s2);
-
-        reduced.ifPresent(System.out::println);
-        // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
-
-
-    }
-
-}
-
-
-
-       </code></pre>
+# Time:  O(logn)
+# Space: O(1)
+class Solution2(object):
+    def arrangeCoins(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        left, right = 1, n
+        while left <= right:
+            mid = left + (right - left) / 2
+            if 2 * n < mid * (mid+1):
+                right = mid - 1
+            else:
+                left = mid + 1
+        return left - 1
+        
+        
+            	
+</code></pre>
   </body>
 </html>		
-     
+    

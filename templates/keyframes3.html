@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
-<pre class="language-java"><code>
+# Time:  O(n)
+# Space: O(1)
+#
+# Given two binary strings, return their sum (also a binary string).
+#
+# For example,
+# a = "11"
+# b = "1"
+# Return "100".
+#
 
-import java.util.ArrayList;
-import java.util.List;
-public class Streams2 {
+class Solution:
+    # @param a, a string
+    # @param b, a string
+    # @return a string
+    def addBinary(self, a, b):
+        result, carry, val = "", 0, 0
+        for i in xrange(max(len(a), len(b))):
+            val = carry
+            if i < len(a):
+                val += int(a[-(i + 1)])
+            if i < len(b): 
+                val += int(b[-(i + 1)])
+            carry, val = val / 2, val % 2
+            result += str(val)
+        if carry:
+            result += str(carry)
+        return result[::-1]
 
-    public static void main(String[] args) {
-
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("aaa1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc");
-        stringCollection.add("bbb2");
-        stringCollection.add("ddd1");
-
-
-        // sorting
-
-        stringCollection
-                .stream()
-                .sorted()
-                .forEach(System.out::println);
-
-        System.out.println(stringCollection);
-
-        
-
-    }
-
-}
- 
-       </code></pre>
+if __name__ == '__main__':
+    result = Solution().addBinary('11', '1')
+    print result
+    
+    
+    	
+</code></pre>
   </body>
 </html>		
-     
+    

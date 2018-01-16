@@ -1,61 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
+# Time:  O(n)
+# Space: O(1)
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-
-
-public class Lambda1 {
-
-    public static void main(String[] args) {
-        List<String> names = Arrays.asList("peter", "anna", "mike", "xenia");
-
-        Collections.sort(names, new Comparator<String>() {
-            @Override
-            public int compare(String a, String b) {
-                return b.compareTo(a);
-            }
-        });
-
-        Collections.sort(names, (String a, String b) -> {
-            return b.compareTo(a);
-        });
-
-        Collections.sort(names, (String a, String b) -> b.compareTo(a));
-
-        Collections.sort(names, (a, b) -> b.compareTo(a));
-
-        System.out.println(names);
-
-        names.sort(Collections.reverseOrder());
-
-        System.out.println(names);
-
-        List<String> names2 = Arrays.asList("peter", null, "anna", "mike", "xenia");
-        names2.sort(Comparator.nullsLast(String::compareTo));
-        System.out.println(names2);
-
-        List<String> names3 = null;
-
-        Optional.ofNullable(names3).ifPresent(list -> list.sort(Comparator.naturalOrder()));
-
-        System.out.println(names3);
-    }
-
-}
+# Given two non-negative numbers num1 and num2 represented as string,
+# return the sum of num1 and num2.
+#
+# Note:
+#
+# The length of both num1 and num2 is < 5100.
+# Both num1 and num2 contains only digits 0-9.
+# Both num1 and num2 does not contain any leading zero.
+# You must not use any built-in BigInteger library or
+# convert the inputs to integer directly.
 
 
-</code></pre>
+class Solution(object):
+    def addStrings(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        result = []
+        i, j, carry = len(num1) - 1, len(num2) - 1, 0
+        
+        while i >= 0 or j >= 0 or carry:
+            if i >= 0:
+                carry += ord(num1[i]) - ord('0');
+                i -= 1
+            if j >= 0:
+                carry += ord(num2[j]) - ord('0');
+                j -= 1
+            result.append(str(carry % 10))
+            carry /= 10
+        result.reverse()
+
+        return "".join(result)
+
+    def addStrings2(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        length = max(len(num1), len(num2))
+        num1 = num1.zfill(length)[::-1]
+        num2 = num2.zfill(length)[::-1]
+        res, plus = '', 0
+        for index, num in enumerate(num1):
+            tmp = str(int(num) + int(num2[index]) + plus)
+            res += tmp[-1]
+            if int(tmp) > 9:
+                plus = 1
+            else:
+                plus = 0
+        if plus:
+            res += '1'
+        return res[::-1]
+        
+        </code></pre>
   </body>
 </html>		
+       

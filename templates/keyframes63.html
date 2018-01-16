@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
-<pre class="language-java"><code>
+# Time:  O(n)
+# Space: O(n)
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-
-public class Streams6 {
-
-    public static void main(String[] args) throws IOException {
-        test1();
-        test2();
-        test3();
-        test4();
-    }
-
-    private static void test4() {
-        Stream
-            .of(new BigDecimal("1.2"), new BigDecimal("3.7"))
-            .mapToDouble(BigDecimal::doubleValue)
-            .average()
-            .ifPresent(System.out::println);
-    }
-
-    private static void test3() {
-        IntStream
-            .range(0, 10)
-            .average()
-            .ifPresent(System.out::println);
-    }
-
-    private static void test2() {
-        IntStream
-            .builder()
-            .add(1)
-            .add(3)
-            .add(5)
-            .add(7)
-            .add(11)
-            .build()
-            .average()
-            .ifPresent(System.out::println);
-
-    }
-
-    private static void test1() {
-        int[] ints = {1, 3, 5, 7, 11};
-        Arrays
-            .stream(ints)
-            .average()
-            .ifPresent(System.out::println);
-    }
-}
+# Given a non negative integer number num. For every numbers i
+# in the range 0 <= i <= num calculate the number 
+# of 1's in their binary representation and return them as an array.
+#
+# Example:
+# For num = 5 you should return [0,1,1,2,1,2].
+#
+# Follow up:
+#
+# It is very easy to come up with a solution with run 
+# time O(n*sizeof(integer)). But can you do it in 
+# linear time O(n) /possibly in a single pass?
+# Space complexity should be O(n).
+# Can you do it like a boss? Do it without using
+# any builtin function like __builtin_popcount in c++ or
+# in any other language.
+# Hint:
+#
+# 1. You should make use of what you have produced already.
+# 2. Divide the numbers in ranges like [2-3], [4-7], [8-15]
+#    and so on. And try to generate new range from previous.
+# 3. Or does the odd/even status of the number help you in
+#    calculating the number of 1s?
 
 
+class Solution(object):
+    def countBits(self, num):
+        """
+        :type num: int
+        :rtype: List[int]
+        """
+        res = [0]
+        for i in xrange(1, num + 1):
+            # Number of 1's in i = (i & 1) + number of 1's in (i / 2).
+            res.append((i & 1) + res[i >> 1])
+        return res
 
-  </code></pre>
+    def countBits2(self, num):
+        """
+        :type num: int
+        :rtype: List[int]
+        """
+        s = [0]
+        while len(s) <= num:
+            s.extend(map(lambda x: x + 1, s))
+        return s[:num + 1]
+
+
+if __name__ == '__main__':
+    s = Solution()
+    r = s.countBits2(5)
+    print r
+    
+    
+     </code></pre>
   </body>
 </html>		
+     
+        

@@ -1,131 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-import java.util.Arrays;
-import java.util.List;
-
-public class Streams11 {
-
-    static class Person {
-        String name;
-        int age;
-
-        Person(String name, int age) {
-            this.name = name;
-            this.age = age;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-    }
-
-    public static void main(String[] args) {
-        List<Person> persons =
-            Arrays.asList(
-                new Person("Max", 18),
-                new Person("Peter", 23),
-                new Person("Pamela", 23),
-                new Person("David", 12));
-
-//        test1(persons);
-//        test2(persons);
-//        test3(persons);
-//        test4(persons);
-//        test5(persons);
-        test6(persons);
-    }
-
-    private static void test1(List<Person> persons) {
-        persons
-            .stream()
-            .reduce((p1, p2) -> p1.age > p2.age ? p1 : p2)
-            .ifPresent(System.out::println);    // Pamela
-    }
-
-    private static void test2(List<Person> persons) {
-        Person result =
-            persons
-                .stream()
-                .reduce(new Person("", 0), (p1, p2) -> {
-                    p1.age += p2.age;
-                    p1.name += p2.name;
-                    return p1;
-                });
-
-        System.out.format("name=%s; age=%s", result.name, result.age);
-    }
-
-    private static void test3(List<Person> persons) {
-        Integer ageSum = persons
-            .stream()
-            .reduce(0, (sum, p) -> sum += p.age, (sum1, sum2) -> sum1 + sum2);
-
-        System.out.println(ageSum);
-    }
-
-    private static void test4(List<Person> persons) {
-        Integer ageSum = persons
-            .stream()
-            .reduce(0,
-                (sum, p) -> {
-                    System.out.format("accumulator: sum=%s; person=%s\n", sum, p);
-                    return sum += p.age;
-                },
-                (sum1, sum2) -> {
-                    System.out.format("combiner: sum1=%s; sum2=%s\n", sum1, sum2);
-                    return sum1 + sum2;
-                });
-
-        System.out.println(ageSum);
-    }
-
-    private static void test5(List<Person> persons) {
-        Integer ageSum = persons
-            .parallelStream()
-            .reduce(0,
-                (sum, p) -> {
-                    System.out.format("accumulator: sum=%s; person=%s\n", sum, p);
-                    return sum += p.age;
-                },
-                (sum1, sum2) -> {
-                    System.out.format("combiner: sum1=%s; sum2=%s\n", sum1, sum2);
-                    return sum1 + sum2;
-                });
-
-        System.out.println(ageSum);
-    }
-
-    private static void test6(List<Person> persons) {
-        Integer ageSum = persons
-            .parallelStream()
-            .reduce(0,
-                (sum, p) -> {
-                    System.out.format("accumulator: sum=%s; person=%s; thread=%s\n",
-                        sum, p, Thread.currentThread().getName());
-                    return sum += p.age;
-                },
-                (sum1, sum2) -> {
-                    System.out.format("combiner: sum1=%s; sum2=%s; thread=%s\n",
-                        sum1, sum2, Thread.currentThread().getName());
-                    return sum1 + sum2;
-                });
-
-        System.out.println(ageSum);
-    }
-}
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
 
-       </code></pre>
+
+#Time:  O(logn) = O(1)
+# Space: O(1)
+# 
+# Divide two integers without using multiplication, division and mod operator.
+
+
+class Solution:
+    def divide(self, dividend, divisor):
+        """
+        :type dividend: int
+        :type divisor: int
+        :rtype: int
+        """
+        result, dvd, dvs = 0, abs(dividend), abs(divisor)
+        while dvd >= dvs:
+            inc = dvs
+            i = 0
+            while dvd >= inc:
+                dvd -= inc
+                result += 1 << i
+                inc <<= 1
+                i += 1
+        if dividend > 0 and divisor < 0 or dividend < 0 and divisor > 0:
+            return -result
+        else:
+            return result
+
+    def divide2(self, dividend, divisor):
+        """
+        :type dividend: int
+        :type divisor: int
+        :rtype: int
+        """
+        positive = (dividend < 0) is (divisor < 0)
+        dividend, divisor = abs(dividend), abs(divisor)
+        res = 0
+        while dividend >= divisor:
+            temp, i = divisor, 1
+            while dividend >= temp:
+                dividend -= temp
+                res += i
+                i <<= 1
+                temp <<= 1
+        if not positive:
+            res = -res
+        return min(max(-2147483648, res), 2147483647)
+        
+if __name__ == "__main__":
+    print Solution().divide(123, 12)
+    print Solution().divide(123, -12)
+    print Solution().divide(-123, 12)
+    print Solution().divide(-123, -12)
+    
+    
+     </code></pre>
   </body>
 </html>		
      
+        
