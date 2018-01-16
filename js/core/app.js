@@ -17,7 +17,7 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'templates/Keyframes.html'
         }).when("/keyframes69",{templateUrl:'templates/keyframes69.html'}).when("/keyframes3", {
             templateUrl: 'templates/keyframes3.html',
-            
+            controller: 'Transitions'
         }).when("/keyframes15", {
             templateUrl: 'templates/keyframes15.html'
         }).when("/keyframes87",{templateUrl:'templates/keyframes87.html'}).when("/keyframes57",{templateUrl:'templates/keyframes57.html'}).when("/keyframes18", {
@@ -27,10 +27,10 @@ App.config(['$routeProvider', function ($routeProvider) {
         }).when("/keyframes102",{templateUrl:'templates/keyframes102.html'}).when("/keyframes96",{templateUrl:'templates/keyframes96.html'}).when("/keyframes93",{templateUrl:'templates/keyframes93.html'}).when("/keyframes90",{templateUrl:'templates/keyframes90.html'}).when("/keyframes60",{templateUrl:'templates/keyframes60.html'}).when("/keyframes51",{templateUrl:'templates/keyframes51.html'})
 		.when("/keyframes27", {
             templateUrl: 'templates/keyframes27.html'
-        }).when("/keyframes54",{templateUrl:'templates/keyframes54.html'}).when("/keyframes30", {
+        }).when("/keyframes115",{templateUrl:'templates/keyframes115.html'}).when("/keyframes105",{templateUrl:'templates/keyframes105.html'}).when("/keyframes54",{templateUrl:'templates/keyframes54.html'}).when("/keyframes30", {
             templateUrl: 'templates/keyframes30.html'
         }).when("/keyframes45",{templateUrl:'templates/keyframes45.html'
-		}).when("/keyframes102",{templateUrl:'templates/keyframes102.html'}).when("/keyframes99",{ templateUrl:'templates/keyframes99.html' }).when("/keyframes48",{templateUrl:'templates/keyframes48.html'}).when("/keyframes39",{templateUrl:'templates/keyframes39.html'}).
+		}).when("/keyframes112",{templateUrl:'templates/keyframes112.html'}).when("/keyframes108",{templateUrl:'templates/keyframes108.html'}).when("/keyframes48",{templateUrl:'templates/keyframes48.html'}).when("/keyframes39",{templateUrl:'templates/keyframes39.html'}).
 		otherwise({
             redirectTo: '/'
         });

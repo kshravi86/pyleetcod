@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,46 +7,58 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
-# Time:  O(k), where k is the steps to be happy number
-# Space: O(k)
-#
-# Write an algorithm to determine if a number is "happy".
-#
-# A happy number is a number defined by the following process: 
-# Starting with any positive integer, replace the number by the sum 
-# of the squares of its digits, and repeat the process until 
-# the number equals 1 (where it will stay), or it loops endlessly 
-# in a cycle which does not include 1. Those numbers for which 
-# this process ends in 1 are happy numbers.
-#
-# Example: 19 is a happy number
-#
-# 1^2 + 9^2 = 82
-# 8^2 + 2^2 = 68
-# 6^2 + 8^2 = 100
-# 1^2 + 0^2 + 0^2 = 1
-#
-class Solution:
-    # @param {integer} n
-    # @return {boolean}
-    def isHappy(self, n):
-        lookup = {}
-        while n != 1 and n not in lookup:
-            lookup[n] = True
-            n = self.nextNumber(n)
-        return n == 1
+
+#include &ltmath.h&gt
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltstdlib.h&gt
+#include &ltassert.h&gt
+#include &ltlimits.h&gt
+#include &ltstdbool.h&gt
+
+int main(){
+    int n; 
+    int k; 
+    int flag=0;
+    scanf("%d %d",&n,&k);
+    char* s = (char *)malloc(512000 * sizeof(char));
+    scanf("%s",s);
+    int *friends = malloc(sizeof(int) * k);
+    for(int friends_i = 0; friends_i &lt k; friends_i++){
+       scanf("%d",&friends[friends_i]);
+    }
+    if(1&lt=k&lt=n&lt=1000)
+        {
+        for(int i=0; i&ltk; i++)
+        {
+            int id = friends[i];
+            {
+                if(s[id-1]== '0')
+                    {
+                    flag = 1;
+                    break;
+                break;
+                }
+                else
+                {
+                flag = 0;
+            }
+          }  
+        }
+    }
+        if(flag == 0)
+            printf("NO");
+        else
+            printf("YES");
     
-    def nextNumber(self, n):
-        new = 0
-        for char in str(n):
-            new += int(char)**2
-        return new
-        
-        
- </code></pre>
+    return 0;
+}
+
+
+        </code></pre>
   </body>
-</html>		       
+</html>		

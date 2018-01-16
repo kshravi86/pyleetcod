@@ -6,47 +6,33 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
 
 
-from collections import deque
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltmath.h&gt
+#include &ltstdlib.h&gt
 
-
-def int_to_bytes_big_endian(num):
-    bytestr = deque()
-    while num > 0:
-        # list.insert(0, ...) is inefficient
-        bytestr.appendleft(num & 0xff)
-        num >>= 8
-    return bytes(bytestr)
-
-
-def int_to_bytes_little_endian(num):
-    bytestr = []
-    while num > 0:
-        bytestr.append(num & 0xff)
-        num >>= 8
-    return bytes(bytestr)
-
-
-def bytes_big_endian_to_int(bytestr):
-    num = 0
-    for b in bytestr:
-        num <<= 8
-        num += b
-    return num
-
-
-def bytes_little_endian_to_int(bytestr):
-    num = 0
-    e = 0
-    for b in bytestr:
-        num += b << e
-        e += 8
-    return num
-     </code></pre>
+int main()
+    {
+    long int a,b,i,z,j,c,d,e;
+    static long int count=0;
+    scanf("%ld %ld",&a,&b);
+    for(i=1;i&lt=b;i++)
+        {
+        scanf("%ld %ld %ld",&c,&d,&e);
+        count=count+(d-c +1)*e;
+        }
+    z=trunc(count/a);
+    printf("%ld",z);
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+    }
+	
+	</code></pre>
   </body>
 </html>		

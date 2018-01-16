@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,43 +6,46 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
 
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltmath.h&gt
+#include &ltstdlib.h&gt
 
+int main() {
+	long int a=0,b,c;
+	int test,i;
+    long int number;
+	scanf("%d",&test);
+	for(i=0;i&lttest;i++)
+	{
+		scanf("%ld",&number);
+		a=0;
+		b=1;
+		c=1;
+	while(c &lt number)
+	{
+		a=b;
+		b=c;
+		c=a+b;
+	}
+	if(c==number)
+	{
+		printf("IsFibo\n");
+	}
+	else 
+	{
+		printf("IsNotFibo\n");
+	}
+	}
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
 
-# Given a string, find the length of the longest substring
-# without repeating characters.
-
-# Examples:
-
-# Given "abcabcbb", the answer is "abc", which the length is 3.
-
-# Given "bbbbb", the answer is "b", with the length of 1.
-
-# Given "pwwkew", the answer is "wke", with the length of 3.
-# Note that the answer must be a substring,
-# "pwke" is a subsequence and not a substring.
-
-def longest_non_repeat(s):
-    start, maxlen = 0, 0
-    used_char = {}
-    for i, char in enumerate(s):
-        if char in used_char and start <= used_char[char]:
-            start = used_char[char] + 1
-        else:
-            maxlen = max(maxlen, i-start+1)
-        used_char[char] = i
-    return maxlen
-
-a = "abcabcdefbb"
-print(a)
-print(longest_non_repeat(a))
-
-
- 
-        </code></pre>
+</code></pre>
   </body>
 </html>		

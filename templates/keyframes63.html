@@ -6,33 +6,53 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
-# Time:  O(logn) = O(1)
-# Space: O(1)
-#
-# Write a program to check whether a given number is an ugly number.
-#
-# Ugly numbers are positive numbers whose prime factors only include
-# 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it
-# includes another prime factor 7.
-#
-# Note that 1 is typically treated as an ugly number.
-#
-class Solution:
-    # @param {integer} num
-    # @return {boolean}
-    def isUgly(self, num):
-        if num == 0:
-            return False
-        for i in [2, 3, 5]:
-            while num % i == 0:
-                num /= i
-        return num == 1
-        
-        
+
+
+/*
+-------------------------------
+Solution : "Birthday Chocolate"
+-------------------------------
+*/
+
+#include &ltmath.h&gt
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltstdlib.h&gt
+#include &ltassert.h&gt
+#include &ltlimits.h&gt
+#include &ltstdbool.h&gt
+
+int solve(int n, int* s, int d, int m) {
+    int pos = 0, count = 0, sum;
+    while(pos + m <= n) {
+        sum = 0;
+        for(int i = pos; i &lt (pos + m) ; i++)
+            sum += s[i];
+        if(sum == d)
+            count++;
+        pos++;
+    }
+    return count;
+}
+
+int main() {
+    int n; 
+    scanf("%d", &n);
+    int *s = malloc(sizeof(int) * n);
+    for(int s_i = 0; s_i &lt n; s_i++){
+       scanf("%d",&s[s_i]);
+    }
+    int d, m; 
+    scanf("%d %d", &d, &m);
+    int result = solve(n, s, d, m);
+    printf("%d\n", result);
+    return 0;
+}
+
+ 
         </code></pre>
   </body>
 </html>		
-        

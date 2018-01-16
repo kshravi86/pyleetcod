@@ -6,34 +6,50 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
 
-# Time:  O(nlogn)
-# Space: O(1)
-#
-# Given a list of non negative integers, arrange them such that they form the largest number.
-# 
-# For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
-# 
-# Note: The result may be very large, so you need to return a string instead of an integer.
-#
 
-class Solution:
-    # @param num, a list of integers
-    # @return a string
-    def largestNumber(self, num):
-        num = [str(x) for x in num]
-        num.sort(cmp=lambda x, y: cmp(y + x, x + y))
-        largest = ''.join(num)
-        return largest.lstrip('0') or '0'
 
-if __name__ == "__main__":
-    num = [3, 30, 34, 5, 9]
-    print Solution().largestNumber(num) 
-    
-    </code></pre>
+/*
+Problem Statement
+
+You will be given a list of 32-bits unsigned integers. You are required to output the list of the unsigned integers you get by flipping bits in its binary representation (i.e. unset bits must be set, and set bits must be unset).
+
+Input Format
+
+The first line of the input contains the list size T. T lines follow each line having an integer from the list.
+
+Constraints
+
+1 ≤ T ≤ 100
+
+Output Format
+
+Output one line per element from the list with the requested result.
+*/
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltmath.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+
+    unsigned int T,ar[100];
+    int i;
+    scanf("%d",&T);
+    for(i=0;i&ltT;i++){
+        scanf("%u",&ar[i]);
+    }
+    for(i=0;i&ltT;i++){
+        printf("%u\n",~ar[i]);
+    }
+    return 0;
+}
+
+
+        </code></pre>
   </body>
 </html>		

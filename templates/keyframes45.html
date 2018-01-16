@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,40 +7,77 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
 
-# Time:  O(n)
-# Space: O(1)
-#
-# Given an integer, convert it to a roman numeral.
-# 
-# Input is guaranteed to be within the range from 1 to 3999.
-#
 
 
-class Solution:
-    # @return a string
-    def intToRoman(self, num):
-        numeral_map = {1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L", 90: "XC", 100: "C", 400: "CD", 500: "D", 900: "CM", 1000: "M"}
-        keyset, result = sorted(numeral_map.keys()), ""
-        
-        while num > 0:
-            for key in reversed(keyset):
-                while num / key > 0:
-                    num -= key
-                    result += numeral_map[key]
-                    
-        return result
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltmath.h&gt
+#include &ltstdlib.h&gt
 
-if __name__ == "__main__":
-    print Solution().intToRoman(999)
-    print Solution().intToRoman(3999)
+struct trades
+    {
+    int t1;
+    int t2;
+    int t3;
+};
+
+int main() {
     
+    int i,n, maximum;
+    scanf("%d",&n);
+    struct trades trades[n];
+    int dayHighest[n];
+    for(i=0; i&ltn; i++)
+        {
+        scanf("%d %d %d", &trades[i].t1, &trades[i].t2, &trades[i].t3);
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
     
-   </code></pre>
+    for(i=0; i&ltn; i++)
+        {
+        if(trades[i].t1 >= trades[i].t2)
+            {
+            if(trades[i].t2 >= trades[i].t3)
+                {
+                dayHighest[i] = trades[i].t1+trades[i].t2;
+            }
+            else
+                {
+                dayHighest[i] = trades[i].t1+trades[i].t3;
+            }
+        }
+            else if(trades[i].t1 &lt= trades[i].t2)
+            {
+            if(trades[i].t1 &gt= trades[i].t3)
+                {
+                dayHighest[i] = trades[i].t1+trades[i].t2;
+            }
+            else
+                {
+                dayHighest[i] = trades[i].t2+trades[i].t3;
+            }
+        }
+    }
+          
+      maximum = dayHighest[0];
+    for (i = 0; i&ltn ; i++)
+    {
+    if (dayHighest[i] > maximum)
+    {
+       maximum  = dayHighest[i];
+    }
+  }
+    printf("%d", maximum);
+    return 0;
+}
+
+        </code></pre>
   </body>
-</html>		 
-    
+</html>		
+
+

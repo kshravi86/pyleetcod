@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,31 +7,40 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
+	
 
 
-"""
-    Lowest Common Multiple
-    ----------------------
-    Simple implementation of the Lowest Common Multiple Algorithm.
-
-    Pseudo Code: https://en.wikipedia.org/wiki/Least_common_multiple
-"""
 
 
-def lcm(a, b):
-    """
-    Simple version of lcm, that does not have any dependencies.
+#include &ltmath.h&gt
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltstdlib.h&gt
+#include &ltassert.h&gt
+#include &ltlimits.h&gt
+#include &ltstdbool.h&gt
 
-    :param a: Integer
-    :param b: Integer
-    :rtype: The lowest common multiple of integers a and b
-    """
-    tmp_a = a
-    while (tmp_a % b) != 0:
-        tmp_a += a
-    return tmp_a
-    
-    </code></pre>
+int main(){
+   int i,j,n;
+	scanf("%d",&n);
+	for (i=1;i&lt=n;i++)
+	{for(j=n-i;j>=1;j--)
+	{
+	printf(" ");}
+	for(j=0;j&lti;j++)
+	{
+	printf("#");
+	}
+	
+	printf("\n");
+}
+    return 0;
+}
+	 
+
+</code></pre>
   </body>
 </html>		
+
+

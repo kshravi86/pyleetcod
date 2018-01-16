@@ -6,48 +6,53 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
-# Time:  O(n)
-# Space: O(n)
-
-# Write a function that takes a string as input and
-# returns the string reversed.
-#
-# Example:
-# Given s = "hello", return "olleh".
-
-class Solution(object):
-    def reverseString(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        string = list(s)
-        i, j = 0, len(string) - 1
-        while i < j:
-            string[i], string[j] = string[j], string[i]
-            i += 1
-            j -= 1
-        return "".join(string)
 
 
-# Time:  O(n)
-# Space: O(n)
-class Solution2(object):
-    def reverseString(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        return s[::-1]
-        
-        
-        
-        </code></pre>
+
+/*
+---------------------------------
+Solution : "Breaking The Records"
+---------------------------------
+*/
+
+#include &ltmath.h&gt
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltstdlib.h&gt
+#include &ltassert.h&gt
+#include &ltlimits.h&gt
+#include &ltstdbool.h&gt
+
+int main() {
+    int n; 
+    scanf("%d",&n);
+    int *s = malloc(sizeof(int) * n);
+    int max, min, maxbreak = 0, minbreak = 0;
+    for(int s_i = 0; s_i &lt n; s_i++){
+        scanf("%d",&s[s_i]);
+        if(s_i == 0) {
+            max = s[s_i];
+            min = s[s_i];
+        }
+        else {
+            if(s[s_i] &gt max) {
+                maxbreak++;
+                max = s[s_i];
+            }
+            if(s[s_i] &lt min) {
+                minbreak++;
+                min = s[s_i];
+            }
+        }
+    }
+    printf("%d %d", maxbreak, minbreak);
+    return 0;
+}
+
+</code></pre>
   </body>
 </html>		
-        
-        

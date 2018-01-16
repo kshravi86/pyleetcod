@@ -6,39 +6,62 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltmath.h&gt
+#include &ltstdlib.h&gt
 
-"""
-Write a function that takes an unsigned integer and
-returns the number of ’1' bits it has
-(also known as the Hamming weight).
+int main() {
+	int ed,em,ey,ad,am,ay;
+	scanf("%d %d %d",&ed,&em,&ey);
+	scanf("%d %d %d",&ad,&am,&ay);
+	if (ed > ad && em==am && ey==ay)
+		{
+			int a;
+			a=(ed-ad)*15;
+			printf("%d\n",a );
+			/* code */
+		}	
+	if (em &gt am && ey==ay)
+	{
+		int b;
+		b=(em-am)*500;
+		printf("%d\n",b );
+		/* code */
+	}
+	if (ey&gtay)
+	{
+		int c;
+		c=10000;
+		printf("%d\n",c );
+		/* code */
+	}
+	if (ey&ltay)
+	{
+		int d=0;
+		printf("%d\n",d );
+		/* code */
+	}
+	if (em&ltam && ey==ay)
+	{
+		int e=0;
+		printf("%d\n", e);
+		/* code */
+	}
+	if (ed&lt=ad && em==am && ey==ay)
+	{
+		int f=0;
+		printf("%d\n",f );
+		/* code */
+	}
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
 
-For example, the 32-bit integer ’11' has binary
-representation 00000000000000000000000000001011,
-so the function should return 3.
-
-T(n)- O(log n)
-"""
-
-
-def count_ones(n):
-    """
-    :type n: int
-    :rtype: int
-    """
-    if n < 0:
-        return
-    counter = 0
-    while n:
-        counter += n & 1
-        n >>= 1
-    return counter
-    
-    
-   
-        </code></pre>
+</code></pre>
   </body>
-</html>		  
+</html>		

@@ -6,36 +6,56 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltmath.h&gt
+#include &ltstdlib.h&gt
 
-"""
-The following code adds two positive integers without using the '+' operator.
-The code uses bitwise operations to add two numbers.
+int main() {
+	int a;
+	scanf("%d",&a);
+	int arr[a][a];
+	for (int i = 0; i &lt a; ++i)
+	{
+		for (int j = 0; j &lt  a; ++j)
+		{
+			scanf("%d",&arr[i][j]);
+			/* code */
+		}
+		
+		/* code */
+	}
+	int count = 0;
+	for(int k=0; k &lt a;k++)
+	{
+		count=count + arr[k][k];
+	}
+	int cou=0;
+	for(int h=0; h &lt a; h++)
+	{
+		cou = cou + arr[a-h-1][h];
+	}
+	int num;
+	if(cou &gt= count)
+		{
+			num = cou - count;
+			printf("%d\n",num );
+		} 
+	else if(cou &lt count)
+	{
+		num = count -cou;
+		printf("%d\n", num );
+	}
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
 
-Input: 2 3
-Output: 5
-"""
 
-
-def addWithoutOperator(x, y):
-    while y != 0:
-        carry = x & y
-        x = x ^ y
-        y = carry << 1
-    print x
-
-
-def main():
-    x, y = map(int, raw_input().split())
-    addWithoutOperator(x, y)
-
-if __name__ == '__main__':
-    main()
-    
-    
-   </code></pre>
+        
+        </code></pre>
   </body>
-</html>		 
+</html>		

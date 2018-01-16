@@ -6,75 +6,85 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 	
-	<pre class="language-python"><code>
+	<pre class="language-c"><code>
 	
 
 
-# Time:  O(n)
-# Space: O(1)
-#
-# Given two strings s and t, write a function to
-# determine if t is an anagram of s.
-#
-# For example,
-# s = "anagram", t = "nagaram", return true.
-# s = "rat", t = "car", return false.
-#
-# Note:
-# You may assume the string contains only lowercase alphabets.
-#
 
-class Solution:
-    # @param {string} s
-    # @param {string} t
-    # @return {boolean}
-    def isAnagram(self, s, t):
-        if len(s) != len(t):
-            return False
+/*
+-----------------------------
+Solution : "Between Two Sets"
+-----------------------------
+*/
 
-        count = {}
+#include &ltmath.h&gt
+#include &ltstdio.h&gt
+#include &ltstring.h&gt
+#include &ltstdlib.h&gt
+#include &ltassert.h&gt
+#include &ltlimits.h&gt
+#include &ltstdbool.h&gt
 
-        for c in s:
-            if c.lower() in count:
-                count[c.lower()] += 1
-            else:
-                count[c.lower()] = 1
+int getTotalX(int a_size, int* a, int b_size, int* b, int min, int max) {
+    int flag = 0, count = 0;
+    for(int i = min; i &lt= max; i++) {
+        flag = 0;
+        for(int j = 0; j &lt a_size; j++) {
+            if(i % a[j] != 0) {
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 1)
+            continue;
+        else {
+            for(int j = 0; j &lt b_size; j++) {
+                if(b[j] % i != 0) {
+                    flag = 1;
+                    break;
+                }
+            }
+            if(flag == 0)
+                count++;
+        }
+    }
+    return count;
+}
 
-        for c in t:
-            if c.lower() in count:
-                count[c.lower()] -= 1
-            else:
-                count[c.lower()] = -1
-            if count[c.lower()] < 0:
-                return False
+int main() {
+    int n; 
+    int m; 
+    scanf("%d %d", &n, &m);
+    int *a = malloc(sizeof(int) * n);
+    int max = 0;
+    int min = 0;
+    for(int a_i = 0; a_i &lt n; a_i++){
+        scanf("%d",&a[a_i]);
+        if(a_i == 0) {
+            max = a[a_i];
+            min = a[a_i];
+        }
+        else {
+            if(a[a_i] &gt max)
+                max = a[a_i];
+            if(a[a_i] &lt min)
+                min = a[a_i];
+        }
+    }
+    int *b = malloc(sizeof(int) * m);
+    for(int b_i = 0; b_i &lt m; b_i++){
+        scanf("%d",&b[b_i]);
+        if(b[b_i] &gt max)
+            max = b[b_i];
+        if(b[b_i] &lt min)
+            min = b[b_i];
+    }
+    int total = getTotalX(n, a, m, b, min, max);
+    printf("%d\n", total);
+    return 0;
+}
 
-        return True
-    
-    def isAnagram2(self, s, t):
-        return all([s.count(c)==t.count(c) for c in string.ascii_lowercase])
-    
-    def isAnagram3(self, s, t):
-        if len(s) != len(t):
-            return False 
-        count = collections.defaultdict(int)
-        for c in s:
-            count[c] += 1
-        for c in t:
-            count[c] -= 1
-            if count[c] < 0:
-                return False
-        return True
 
-# Time:  O(nlogn)
-# Space: O(n)
-class Solution2:
-    # @param {string} s
-    # @param {string} t
-    # @return {boolean}
-    def isAnagram(self, s, t):
-        return sorted(s) == sorted(t)
-        
-        
         </code></pre>
   </body>
 </html>		
