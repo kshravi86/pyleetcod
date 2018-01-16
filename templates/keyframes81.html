@@ -1,61 +1,93 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> What is Annotation-based container configuration?
+	  
+	</p>
+
+
+
+
 	
-	<pre class="language-c"><code>
-	
+	An alternative to XML setups is provided by annotation-based configuration which relies on the bytecode metadata for wiring up components instead of angle-bracket declarations. Instead of using XML to describe a bean wiring, the developer moves the configuration into the component class itself by using annotations on the relevant class, method, or field declaration.
+	  
+	  </div>
 
 
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltmath.h&gt
-#include &ltstdlib.h&gt
-
-int main() {
-	int a;
-	scanf("%d",&a);
-	int arr[a][a];
-	for (int i = 0; i &lt a; ++i)
-	{
-		for (int j = 0; j &lt  a; ++j)
-		{
-			scanf("%d",&arr[i][j]);
-			/* code */
-		}
-		
-		/* code */
-	}
-	int count = 0;
-	for(int k=0; k &lt a;k++)
-	{
-		count=count + arr[k][k];
-	}
-	int cou=0;
-	for(int h=0; h &lt a; h++)
-	{
-		cou = cou + arr[a-h-1][h];
-	}
-	int num;
-	if(cou &gt= count)
-		{
-			num = cou - count;
-			printf("%d\n",num );
-		} 
-	else if(cou &lt count)
-	{
-		num = count -cou;
-		printf("%d\n", num );
-	}
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
-    return 0;
-}
 
 
-        
-        </code></pre>
-  </body>
-</html>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,57 +1,92 @@
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
-	
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> What is bean wiring?
+	  
+	</p>
 
 
 
-/*
------------------------------
-Solution : "Grading Students"
------------------------------
-*/
 
-#include &ltmath.h&gt
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-#include &ltlimits.h&gt
-#include &ltstdbool.h&gt
+	Wiring, or else bean wiring is the case when beans are combined together within the Spring container. When wiring beans, the Spring container needs to know what beans are needed and how the container should use dependency injection to tie them together.
 
-int* solve(int grades_size, int* grades) {
-    int div;
-    for(int i = 0; i &lt grades_size ; i++) {
-        if(grades[i] > 37) {
-            div = ((int) (grades[i] / 5)) + 1;
-            if((5 * div) - grades[i] < 3)
-                grades[i] = 5 * div;
-         }
-    }
-    return grades;
-}
+  </div>
 
-int main() {
-    int n; 
-    scanf("%d", &n);
-    int *grades = malloc(sizeof(int) * n);
-    for(int grades_i = 0; grades_i &lt n; grades_i++){
-       scanf("%d", &grades[grades_i]);
-    }
-    int* result = solve(n, grades);
-    for(int result_i = 0; result_i &lt n; result_i++) {
-        printf("%d\n", result[result_i]);
-    }
-    return 0;
-}
 
-  </code></pre>
-  </body>
-</html>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

@@ -5,46 +5,38 @@
   </head>
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
-	
+
+	<pre class="language-cpp"><code>
 
 
 
 
 
-#include &ltmath.h&gt
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-#include &ltlimits.h&gt
-#include &ltstdbool.h&gt
 
-int main(){
-    long int a[5];
-    int i,j,temp;
-    for(i=0;i&lt5;i++)
-        {
-        scanf("%ld",&a[i]);
-    }
-    	for(j=0;j&lt4;j++)
+
+//lonely-integer.cpp
+//Lonely Integer
+
+
+#include&ltiostream&gt
+using namespace std;
+
+int main()
+{
+	int n;
+	cin >> n;
+	int sum = 0, val;
+	for (int i = 0; i &lt n; i++)
 	{
-	for(i=0;i&lt4;i++)
-	{
-	if(a[i]>a[i+1])
-	{
-	temp=a[i];
-	a[i]=a[i+1];
-	a[i+1]=temp;}
-}
-}
-  printf("%ld\t",a[0]+a[1]+a[2]+a[3]);
-  printf("%ld",a[1]+a[2]+a[3]+a[4]);   
-    
-    return 0;
+		cin >> val;
+		sum ^= val;
+	}
+	cout &lt&lt sum &lt&lt endl;
+	return 0;
 }
 
- </code></pre>
+
+
+	  </code></pre>
   </body>
 </html>		

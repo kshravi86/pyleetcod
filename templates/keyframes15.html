@@ -5,66 +5,33 @@
   </head>
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
-	
+
+	<pre class="language-cpp"><code>
 
 
 
-#include &ltmath.h&gt
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-#include &ltlimits.h&gt
-#include &ltstdbool.h&gt
+#include&ltiostream&gt
+#include&ltalgorithm&gt
+using namespace std;
 
-int main(){
-    int n,i,temp,c,k=0,j; 
-    scanf("%d",&n);
-    int arr[n];
-    for(int arr_i = 0; arr_i &lt n; arr_i++){
-        scanf("%d",&arr[arr_i]);}
-        for(j=0;j&ltn-1;j++)
-            {
-            for(i=0;i&ltn-1;i++)
-                {
-                if(arr[i]>arr[i+1])
-	{
-	temp=arr[i];
-	arr[i]=arr[i+1];
-	arr[i+1]=temp;}
-                 }
-        }
-        while(arr[n-1]!=0)
-            {
-            k=0;
-            for(i=0;i&ltn;i++)
-                {
-                if(arr[i]!=0)
-                    {
-                    c=arr[i];
-                    break;}
-                    else
-                        {continue;}
-                 }
-            for(i=0;i&ltn;i++)
-                {
-                if(arr[i]!=0)
-                    {
-                    arr[i]=arr[i]-c;
-                    k++;}
-                    else
-                        {continue;}
-                
-                }
-            printf("%d\n",k);
-             } 
-        
-    
-    return 0;
+int x[100000];
+
+int main()
+{
+	int n, k;
+	cin >> n >> k;
+	for (int i = 0; i < n; i++)
+		cin >> x[i];
+	sort(x, x + n);
+	int ans = 2147483647;
+	for (int i = k - 1; i < n; i++)
+		if (x[i] - x[i - k + 1] < ans)
+			ans = x[i] - x[i - k + 1];
+	cout << ans << endl;
+	return 0;
 }
 
-</code></pre>
+
+        </code></pre>
   </body>
 </html>		

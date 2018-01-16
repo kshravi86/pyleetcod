@@ -5,43 +5,46 @@
   </head>
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
-	
+
+	<pre class="language-cpp"><code>
 
 
 
-#include &ltmath.h&gt
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-#include &ltlimits.h&gt
-#include &ltstdbool.h&gt
 
-int main(){
-    int t,y,i; 
-    scanf("%d",&t);
-    for(int a0 = 0; a0 &lt t; a0++){
-        int n; 
-        y=1;
-        scanf("%d",&n);
-        for(i=1;i&lt=n;i++)
-            {
-            if(i%2!=0)
-                {
-                y=2*y;
-                 }
-            else
-                {
-                y=y+1;
-            }
-               }
-        printf("%d\n",y);
-    }
-    return 0;
+
+
+#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltalgorithm&gt
+using namespace std;
+
+int main()
+{
+	int n, k;
+	cin >> n >> k;
+	vector<int> v;
+	for (int i = 0; i < n; i++)
+	{
+		int num;
+		cin >> num;
+		v.push_back(num);
+	}
+	sort(v.begin(), v.end());
+	long long sum = 0;
+	int ret = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += v[i];
+		if (sum >= k)
+			break;
+		ret++;
+	}
+	cout << ret << endl;
+	return 0;
 }
 
-</code></pre>
+
+
+        </code></pre>
   </body>
 </html>		

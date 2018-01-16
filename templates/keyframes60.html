@@ -1,62 +1,98 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> Which are the important beans lifecycle methods? Can you override them?
+	  
+	</p>
+
+
+
+
+
+
+
+
 	
-	<pre class="language-c"><code>
-	
+	<br>There are two important bean lifecycle methods. The first one is setup which is called when the bean is loaded in to the container. The second method is the teardown method which is called when the bean is unloaded from the container.
+	<br>The bean tag has two important attributes (init-method and destroy-method) with which you can define your own custom initialization and destroy methods. There are also the correspondive annotations(@PostConstruct and @PreDestroy).
+	  
+	  </div>
 
 
 
 
-/*
 
-Problem Statement
 
-Roy wanted to increase his typing speed for programming contests. So, his friend advised him to type the sentence "The quick brown fox jumps over the lazy dog" repeatedly because it is a pangram. ( pangrams are sentences constructed by using every letter of the alphabet at least once. )
 
-After typing the sentence several times, Roy became bored with it. So he started to look for other pangrams.
 
-Given a sentence s, tell Roy if it is a pangram or not.
 
-Input Format
 
-Input consists of a line containing s. 
-*/
-#include&ltstdio.h&gt
 
-int main()
-{
-  char string[1000],b;
-  int i=0;
-  int map[26];
-  for(i=0;i&lt26;i++)
-    map[i]=0;
-  i=0;
-  scanf("%[^\n]s",string);
-  while(string[i]!='\0')
-    {
-      b=tolower(string[i]);
-      map[b-97]+=1;
-      i++;
-    }
-  /*for(i=0;i<26;i++)
-    {
-      printf("%d\n",map[i]);
-      }*/
-  for(i=0;i&lt26;i++)
-    if(map[i]==0)
-      {
-	printf("not pangram\n");
-	return 0;
-      }
-  printf("pangram\n");
-  return 0;
-}
 
- </code></pre>
-  </body>
-</html>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

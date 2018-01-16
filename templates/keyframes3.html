@@ -1,54 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
 
-<pre class="language-c"><code>
-
-
+	<pre class="language-cpp"><code>
 
 
-/*
-Problem Statement
+		
 
-You will be given a list of 32-bits unsigned integers. You are required to output the list of the unsigned integers you get by flipping bits in its binary representation (i.e. unset bits must be set, and set bits must be unset).
 
-Input Format
 
-The first line of the input contains the list size T. T lines follow each line having an integer from the list.
 
-Constraints
 
-1 ≤ T ≤ 100
+//cut-the-tree.cpp
+//Cut the tree
 
-Output Format
 
-Output one line per element from the list with the requested result.
-*/
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdlib.h>
+#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltclimits&gt
+using namespace std;
 
-int main() {
+int value[100001], n, tot, best;
+vector&ltvector&ltint&gt  v;
+bool visited[100001];
+int sum[100001];
 
-    unsigned int T,ar[100];
-    int i;
-    scanf("%d",&T);
-    for(i=0;i<T;i++){
-        scanf("%u",&ar[i]);
-    }
-    for(i=0;i<T;i++){
-        printf("%u\n",~ar[i]);
-    }
-    return 0;
+int dfs(int node)
+{
+	int ret = 0;
+	visited[node] = true;
+	int sz = (int)v[node].size();
+	for (int i = 0; i < sz; i++)
+	{
+		int next = v[node][i];
+		if (!visited[next])
+			ret += dfs(next);
+	}
+	return sum[node] = value[node] + ret;
+}
+
+int main()
+{
+	best = INT_MAX;
+	tot = 0;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> value[i];
+		tot += value[i];
+	}
+	v.resize(n + 1);
+	for (int i = 0; i < n - 1; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		v[a].push_back(b);
+		v[b].push_back(a);
+	}
+	dfs(1);
+	for (int i = 1; i <= n; i++)
+		if (abs(tot - sum[i] - sum[i]) < best)
+			best = abs(tot - sum[i] - sum[i]);
+	cout << best << endl;
+	return 0;
 }
 
 
 
-</code></pre>
+        
+        </code></pre>
   </body>
 </html>		

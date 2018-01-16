@@ -1,58 +1,92 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> What is bean auto wiring?
+	  
+	</p>
+
+
+
+
 	
-	<pre class="language-c"><code>
-	
+	The Spring container is able to autowire relationships between collaborating beans. This means that it is possible to automatically let Spring resolve collaborators (other beans) for a bean by inspecting the contents of the BeanFactory without using constructor-arg and property elements.
+  </div>
 
 
 
 
 
-/*
----------------------------------
-Solution : "Breaking The Records"
----------------------------------
-*/
 
-#include &ltmath.h&gt
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-#include &ltlimits.h&gt
-#include &ltstdbool.h&gt
 
-int main() {
-    int n; 
-    scanf("%d",&n);
-    int *s = malloc(sizeof(int) * n);
-    int max, min, maxbreak = 0, minbreak = 0;
-    for(int s_i = 0; s_i &lt n; s_i++){
-        scanf("%d",&s[s_i]);
-        if(s_i == 0) {
-            max = s[s_i];
-            min = s[s_i];
-        }
-        else {
-            if(s[s_i] &gt max) {
-                maxbreak++;
-                max = s[s_i];
-            }
-            if(s[s_i] &lt min) {
-                minbreak++;
-                min = s[s_i];
-            }
-        }
-    }
-    printf("%d %d", maxbreak, minbreak);
-    return 0;
-}
 
-</code></pre>
-  </body>
-</html>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

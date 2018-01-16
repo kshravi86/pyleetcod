@@ -1,67 +1,100 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> How can we integrate Spring and Hibernate using HibernateDaoSupport?
+	  
 	
-	<pre class="language-c"><code>
+	</p>
+
+
+
+
+
+
+
 	
+	<br>Use Spring’s SessionFactory called LocalSessionFactory. The integration process is of 3 steps:
+	<br>Configure the Hibernate SessionFactory
+	<br>Extend a DAO Implementation from HibernateDaoSupport
+	<br>Wire in Transaction Support with AOP
+
+  </div>
 
 
 
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltmath.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-int main(){
-    int test;
-    scanf("%d",&test);
-    int i;
-    int arr[test];
-    for(i=0;i&lttest;i++)
-        {
-        scanf("%d",&arr[i]);
-    }
-    int a;
-    a=arr[test-1];
-    int j;
-    for(j=0;j&lttest-1;j++)
-        {
-        if(arr[test-2-j]&gta)
-            {
-            arr[test-1-j]=arr[test-2-j];
-        }
-        else if(arr[test-2-j]&lta)
-            {
-            arr[test-1-j]=a;
-             int h;
-                for(h=0;h&lttest;h++)
-                printf("%d ",arr[h]);
-   
-            break;
-        }
-        int k;
-        for(k=0;k&lttest;k++)
-            {
-            printf("%d ",arr[k]);
-        }
-        printf("\n");
-    }
-    if(arr[0]&gta)
-                {
-                arr[0]=a;
-    int o;
-    for(o=0;o&lttest;o++)
-        printf("%d ",arr[o]);
-    }
 
-   
-   return 0;
-}
 
- </code></pre>
-  </body>
-</html>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

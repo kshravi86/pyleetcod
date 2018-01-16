@@ -1,45 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
-	
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
 
 
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltmath.h&gt
-#include &ltstdlib.h&gt
+  <div style="color:blue;">
+	<br><p style="color:red;"> What is Controller in Spring MVC framework?
+	  
 
-int main() 
-    {
-    int N,i,j;
-    scanf("%d",&N);
-    for(i=1;i&lt=N;i++)
-        {
-        char arr[10001];
-        scanf("%s",arr);
-        int count=0;
-        for(j=0;j&ltstrlen(arr)/2;j++)
-            {
-            if(arr[j]&ltarr[strlen(arr)-1-j])
-                {
-                count=arr[strlen(arr)-1-j]-arr[j] + count;
-                }
-            if(arr[j]&gtarr[strlen(arr)-1-j])
-                {
-                count=arr[j]-arr[strlen(arr)-1-j] + count;
-                }
-            }
-        printf("%d\n",count);
-        }
-    return 0;
-    }
+	</p>
+
+
 	
-	 </code></pre>
-  </body>
-</html>		
+	
+	<br>Controllers provide access to the application behavior that you typically define through a service interface. Controllers interpret user input and transform it into a model that is represented to the user by the view. Spring implements a controller in a very abstract way, which enables you to create a wide variety of controllers.
+
+
+  </div>
+
+
+
+
+
+
+
+</div>

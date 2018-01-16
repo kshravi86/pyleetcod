@@ -1,54 +1,95 @@
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> How do you define the scope of a bean?</p>
 	
 
 
 
 
 
-/*
-Problem Statement
 
-Alex is attending a Halloween party with his girlfriend Silvia. At the party, Silvia spots a giant chocolate bar. If the chocolate can be served as only 1 x 1 sized pieces and Alex can cut the chocolate bar exactly K times, what is the maximum number of chocolate pieces Alex can cut and give Silvia?
+	
+	When defining a bean in Spring, we can also declare a scope for the bean. It can be defined through the scope attribute in the bean definition. For example, when Spring has to produce a new bean instance each time one is needed, the bean’s scope attribute to be prototype. On the other hand, when the same instance of a bean must be returned by Spring every time it is needed, the the bean scope attribute must be set to singleton.
 
-Input Format
-The first line contains an integer T, the number of test cases. T lines follow.
-Each line contains an integer K
 
-Output Format
-T lines. Each line contains an integer that denotes the maximum number of pieces that can be obtained for each test case.
+  </div>
 
-Constraints
-1&lt=T&lt=10
-2&lt=K&lt=107
 
-Note
-Chocolate must be served in size of 1 x 1 size pieces.
-Alex can't relocate any of the pieces, nor can he place any piece on top of another.
-*/
 
-#include&ltstdio.h&gt
-int main(){
-  int T;
-  long long int K;
-  int i,j;
-  scanf("%d",&T);
-  for(i=0;i&ltT;i++){
-	scanf("%lld",&K);
-    printf("%lld\n",((K-K/2)*(K/2)));
-  }
-  return 0;
-}
 
-        </code></pre>
-  </body>
-</html>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
 

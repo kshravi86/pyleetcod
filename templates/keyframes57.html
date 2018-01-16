@@ -1,46 +1,101 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
+
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> Explain Bean lifecycle in Spring framework</p>
 	
 
 
 
-/*
-Service lane question in hacker rank
-Authored by abhiranjan on Nov 21 2013
-https://www.hackerrank.com/challenges/service-lane
-*/
-#include&ltstdio.h&gt
-int main()
-  {
-  int N,T;
-  int width[100000];
-  int i,j,lc,l2;
-  int min=0;
-  scanf("%d %d",&N,&T);
-  //printf("%d %d",N,T);
-  for(lc=0;lc&ltN;lc++){
-    scanf("%d",&width[lc]);
-  }
-  for(lc=0;lc&ltT;lc++){
-    scanf("%d %d",&i,&j);
-    min=width[i];
-    for(l2=i+1;l2&lt=j;l2++)
-      {
-      if(width[l2]&ltmin)
-        min=width[l2];
-    }
-    printf("%d\n",min);
-  }
-  return 0;
-}
 
-</code></pre>
-  </body>
-</html>		
+
+
+
+	
+	<br>The spring container finds the bean’s definition from the XML file and instantiates the bean.
+	<br>Spring populates all of the properties as specified in the bean definition (DI).
+	<br>If the bean implements BeanNameAware interface, spring passes the bean’s id to setBeanName() method.
+	<br>If Bean implements BeanFactoryAware interface, spring passes the beanfactory to setBeanFactory() method.
+	<br>If there are any bean BeanPostProcessors associated with the bean, Spring calls postProcesserBeforeInitialization() method.
+	<br>If the bean implements IntializingBean, its afterPropertySet() method is called. If the bean has init method declaration, the specified initialization method is called.
+	<br>If there are any BeanPostProcessors associated with the bean, their postProcessAfterInitialization() methods will be called.
+	<br>If the bean implements DisposableBean, it will call the destroy() method.
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

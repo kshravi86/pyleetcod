@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,53 +5,43 @@
   </head>
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-c"><code>
-	
+
+	<pre class="language-cpp"><code>
 
 
 
+#include&ltiostream&gt
+#include&ltstring&gt
+using namespace std;
 
-#include &ltmath.h&gt
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-#include &ltlimits.h&gt
-#include &ltstdbool.h&gt
+const int MOD = 1000000007;
+string num;
+int save[200001];
 
-int main(){
-    int t,k=0,j,y,i,b;
-    int a[100];
-    scanf("%d",&t);
-    for(int a0 = 0; a0 &lt t; a0++){
-        int n;
-        y=0;
-        k=0;
-        j=0;
-        scanf("%d",&n);
-        b=n;
-        while(b!=0)
-            {
-            a[j]=b%10;
-            b=b/10;
-            j++;
-            k++;
-             }
-        for(i=0;i&ltk;i++)
-            {
-            if(a[i]!=0)
-                {
-                if(n%a[i]==0)
-                    {y++;}
-                   }
-                 }
-        printf("%d\n",y);
-    }
-    return 0;
+void init()
+{
+	save[1] = 1;
+	for (int i = 2; i <= 200000; i++)
+		save[i] = ((long long)save[i - 1] * 10 + 1) % MOD;
+}
+
+int main()
+{
+	init();
+	string num;
+	cin >> num;
+	int n = (int)num.size();
+	int ans = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		int digit = num[i - 1] - '0';
+		ans = ((long long)digit * i * save[n - i + 1] + ans) % MOD;
+	}
+	cout << ans << endl;
+	return 0;
 }
 
 
-        </code></pre>
+ </code></pre>
   </body>
 </html>		

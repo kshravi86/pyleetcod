@@ -1,58 +1,96 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+
+<div class="content" 
+  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+
+
+  <div style="color:blue;">
+	<br><p style="color:red;"> What are inner beans in Spring?
+	  
+	</p>
+
+
+
+
 	
-	<pre class="language-c"><code>
-	
+	When a bean is only used as a property of another bean it can be declared as an inner bean. Spring’s XML-based configuration metadata provides the use of bean element inside the property or constructor-arg elements of a bean definition, in order to define the so-called inner bean. Inner beans are always anonymous and they are always scoped as prototypes.
 
 
 
-/*
--------------------------------
-Solution : "Birthday Chocolate"
--------------------------------
-*/
 
-#include &ltmath.h&gt
-#include &ltstdio.h&gt
-#include &ltstring.h&gt
-#include &ltstdlib.h&gt
-#include &ltassert.h&gt
-#include &ltlimits.h&gt
-#include &ltstdbool.h&gt
+  </div>
 
-int solve(int n, int* s, int d, int m) {
-    int pos = 0, count = 0, sum;
-    while(pos + m <= n) {
-        sum = 0;
-        for(int i = pos; i &lt (pos + m) ; i++)
-            sum += s[i];
-        if(sum == d)
-            count++;
-        pos++;
-    }
-    return count;
-}
 
-int main() {
-    int n; 
-    scanf("%d", &n);
-    int *s = malloc(sizeof(int) * n);
-    for(int s_i = 0; s_i &lt n; s_i++){
-       scanf("%d",&s[s_i]);
-    }
-    int d, m; 
-    scanf("%d %d", &d, &m);
-    int result = solve(n, s, d, m);
-    printf("%d\n", result);
-    return 0;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
 
  
-        </code></pre>
-  </body>
-</html>		
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
